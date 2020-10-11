@@ -10,7 +10,7 @@ use App\Models\CourierModel;
 use App\Models\TypeModel;
 use App\Models\ServiceTypeModel;
 use App\Models\CurrencyModel;
-
+use Telegram;
 use Carbon\Carbon;
 class MoneyController extends Controller
 {
@@ -36,7 +36,13 @@ class MoneyController extends Controller
         $current = Carbon::now();
         $money = new MoneyModel();
         $money->customer_id = $request->customername;
-        $money->courier_id = $request->customername;
+        if ($request->couriername == '')
+        {
+            $money->courier_id = 'В офисе';
+        }
+        else {
+        $money->courier_id = $request->couriername;
+        }
         $currencyy = CurrencyModel::get();
          $rub_usd = floatval($currencyy[0]->rub_usd);
          $rub_uzs = floatval($currencyy[0]->rub_uzs);
@@ -68,10 +74,40 @@ class MoneyController extends Controller
         $money->servicetype = $request->servicetype;
         $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy[0]->rub_usd. " Рубль к суму: ".$currencyy[0]->rub_uzs. " Сум к доллару: ".$currencyy[0]->uzs_usd;
         $money->dategive = $current->format('d-m-y');
-        $money->status = 'Received';
+        $money->status = 'Принят';
         $money->datereceive = $current->format('d-m-y');
         $money->save();
+        $response = Telegram::getMe();
+
+        $botId = $response->getId();
+        $firstName = $response->getFirstName();
+        $username = $response->getUsername();
+
+        $message = <<<TEXT
+        --------------------------------------------
+        Имя клиента: $money->customer_id
+        Имя курера: $money->courier_id
+        Сумма в $: $money->usd
+        Сумма в рублях: $money->rub
+        Сумма в сумах: $money->uzs
+        Тип валюты:  $money->type
+        Тип сервиса: $money->servicetype
+        Дата взятие: $money->dategive
+        Дата принятие: $money->datereceive
+        Описание: $money->description
+        --------------------------------------------
+        TEXT;
+        
+        $response = Telegram::sendMessage([
+            'chat_id' => '971040970', 
+            'text'=>$message
+            ]);
+          
+          $messageId = $response->getMessageId();
         return back();
+
+        // Telegram::setAsyncRequest(true)
+        //   ->sendPhoto(['chat_id' => '971040970', 'photo' => 'path/to/photo.jpg']);
     }
 
     public function editmoney($id)
@@ -90,7 +126,13 @@ class MoneyController extends Controller
         $money =  MoneyModel::find($id);
         // dd($money);
         $money->customer_id = $request->customername;
-        $money->courier_id = $request->customername;
+         if ($request->couriername == '')
+        {
+            $money->courier_id = 'В офисе';
+        }
+        else {
+        $money->courier_id = $request->couriername;
+        }
         $currencyy = CurrencyModel::get();
          $rub_usd = floatval($currencyy[0]->rub_usd);
          $rub_uzs = floatval($currencyy[0]->rub_uzs);
@@ -123,7 +165,7 @@ class MoneyController extends Controller
         $money->servicetype = $request->servicetype;
         $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy[0]->rub_usd. " Рубль к суму: ".$currencyy[0]->rub_uzs. " Сум к доллару: ".$currencyy[0]->uzs_usd;
         $money->dategive = $current->format('d-m-y');
-        $money->status = 'Received';
+        $money->status = 'Принят';
         $money->datereceive = $current->format('d-m-y');
         // dd($request->all());
         $money->save();

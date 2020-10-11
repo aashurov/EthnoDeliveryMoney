@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Add Customer') }}
+            {{ __('Добавить нового клиента') }}
         </h2>
     </x-slot>
 
@@ -14,25 +14,25 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                     <div>
-                        <x-jet-application-logo class="block h-12 w-auto" />
+                        {{-- <x-jet-application-logo class="block h-12 w-auto" /> --}}
                     </div>
                     <div class="mt-8 text-2xl">
-                        Please fill all of textboxes
+                        Пожалуйста запольните все поля
                     </div>
                     <div class="mt-6 text-gray-500">
                         <form method="POST" action={{route('savecustomer')}}>
                             @csrf
                             <div class="form-row">
                               <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="customername" placeholder="Enter name of new customer">
+                                <input type="text" class="form-control" name="customername" placeholder="Введите имя клиента">
                               </div>
                               <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="phonenumber" placeholder="Enter phone number of new customer">
+                                <input type="text" class="form-control" name="phonenumber" placeholder="Введите контакты клиента">
                               </div>
                             </div>
                          
                          
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
                           </form>
                     </div>
                 </div>

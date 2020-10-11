@@ -13,17 +13,32 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Главная') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('listmoney') }}" :active="request()->routeIs('listmoney')">
-                        {{ __('Money Table') }}
+                        {{ __('Приход') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('listtransaction') }}" :active="request()->routeIs('listtransaction')">
+                        {{ __('Расход') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('listcustomer') }}" :active="request()->routeIs('listcustomer')">
-                        {{ __('Customer Table') }}
+                        {{ __('Клиенты') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('listcourier') }}" :active="request()->routeIs('listcourier')">
+                        {{ __('Куреры') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('listcurrency') }}" :active="request()->routeIs('listcurrency')">
+                        {{ __('Курс') }}
                     </x-jet-nav-link>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Money Table') }}
+            {{ __('Список клиентов') }}
         </h2>
     </x-slot>
 
@@ -12,18 +12,16 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200" >
                     <div>
-                        <x-jet-application-logo class="block h-12 w-auto" />
+                        {{-- <x-jet-application-logo class="block h-12 w-auto" /> --}}
                     </div>
                     <div class="mt-6 text-gray-500">
                       <div class="panel-heading">
                         <div class="row">
                           <div class="col col-xs-6">
-                            <h3 class="panel-title">List of Customer</h3>
+                            <h3 class="panel-title">Список клиентов</h3>
                           </div>
                           <div class="col col-xs-6 text-right">
-                            <a class="btn btn-sm btn-primary btn-create"  href="{{ route('addcustomer') }}">Create New</a>
-
-                            {{-- <button type="button"  href="{{ route('addmoney') }}" class="btn btn-sm btn-primary btn-create">Create New</button> --}}
+                            <a class="btn btn-sm btn-primary btn-create"  href="{{ route('addcustomer') }}">Добавить</a>
                           </div>
                         </div>
                       </div>
@@ -33,9 +31,9 @@
                         <thead>
                           <tr>
                             <th scope="col">№</th>
-                            <th scope="col">Customer Name</th>
-                            <th scope="col">Phone Number</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Имя Клиента</th>
+                            <th scope="col">Контакты</th>
+                            <th scope="col">Действия</th>
                           </tr>
                         </thead>
                         <tbody>

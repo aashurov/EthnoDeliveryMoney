@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MoneyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CourierController;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +39,26 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/savecustomer', [Customer
 Route::middleware(['auth:sanctum', 'verified'])->get('/editcustomer/{id}', [CustomerController::class, 'editcustomer'])->name('editcustomer');
 Route::middleware(['auth:sanctum', 'verified'])->post('/updatecustomer/{id}', [CustomerController::class, 'updatecustomer'])->name('updatecustomer');
 Route::middleware(['auth:sanctum', 'verified'])->post('/deletecustomer/{id}', [CustomerController::class, 'deletecustomer'])->name('deletecustomer');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/listcourier', [CourierController::class, 'listcourier'])->name('listcourier');
+Route::middleware(['auth:sanctum', 'verified'])->get('/addcourier', [CourierController::class, 'addcourier'])->name('addcourier');
+Route::middleware(['auth:sanctum', 'verified'])->post('/savecourier', [CourierController::class, 'savecourier'])->name('savecourier');
+Route::middleware(['auth:sanctum', 'verified'])->get('/editcourier/{id}', [CourierController::class, 'editcourier'])->name('editcourier');
+Route::middleware(['auth:sanctum', 'verified'])->post('/updatecourier/{id}', [CourierController::class, 'updatecourier'])->name('updatecourier');
+Route::middleware(['auth:sanctum', 'verified'])->post('/deletecourier/{id}', [CourierController::class, 'deletecourier'])->name('deletecourier');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/listcurrency', [CurrencyController::class, 'listcurrency'])->name('listcurrency');
+Route::middleware(['auth:sanctum', 'verified'])->get('/addcurrency', [CurrencyController::class, 'addcurrency'])->name('addcurrency');
+Route::middleware(['auth:sanctum', 'verified'])->post('/savecurrency', [CurrencyController::class, 'savecurrency'])->name('savecurrency');
+Route::middleware(['auth:sanctum', 'verified'])->get('/editcurrency/{id}', [CurrencyController::class, 'editcurrency'])->name('editcurrency');
+Route::middleware(['auth:sanctum', 'verified'])->post('/updatecurrency{id}', [CurrencyController::class, 'updatecurrency'])->name('updatecurrency');
+Route::middleware(['auth:sanctum', 'verified'])->post('/deletecurrency/{id}', [CurrencyController::class, 'deletecurrency'])->name('deletecurrency');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/listtransaction', [TransactionController::class, 'listtransaction'])->name('listtransaction');
+Route::middleware(['auth:sanctum', 'verified'])->get('/addtransaction', [TransactionController::class, 'addtransaction'])->name('addtransaction');
+Route::middleware(['auth:sanctum', 'verified'])->post('/savetransaction', [TransactionController::class, 'savetransaction'])->name('savetransaction');
+Route::middleware(['auth:sanctum', 'verified'])->get('/edittransaction/{id}', [TransactionController::class, 'edittransaction'])->name('edittransaction');
+Route::middleware(['auth:sanctum', 'verified'])->post('/updatetransaction{id}', [TransactionController::class, 'updatetransaction'])->name('updatetransaction');
+Route::middleware(['auth:sanctum', 'verified'])->post('/deletetransaction/{id}', [TransactionController::class, 'deletetransaction'])->name('deletetransaction');

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Money') }}
+            {{ __('Добавить расход') }}
         </h2>
     </x-slot>
 
@@ -14,69 +14,58 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                     <div>
-                        <x-jet-application-logo class="block h-12 w-auto" />
+                        {{-- <x-jet-application-logo class="block h-12 w-auto" /> --}}
                     </div>
                     <div class="mt-8 text-2xl">
-                        Please fill all of textboxes
+                        Пожалуйста запольните все поля
                     </div>
                     <div class="mt-6 text-gray-500">
-                        <form method="POST" action={{route('savemoney')}}>
+                        <form method="POST" action={{route('savetransaction')}}>
                             @csrf
                             <div class="form-row">
                               <div class="form-group col-md-6">
-                                <select id="editable-select" name="customername" class="form-control" placeholder="Customer Name">
-                                  <option>Alfa Romeo</option>
-                                  <option>Audi</option>
-                                  <option>BMW</option>
-                                  <option>Citroen</option>
-                                </select>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <select name="couriername" class="form-control" placeholder="Courier Name">
-                                  <option selected>Courier Name...</option>
-                                  <option>Aziz</option>
-                                  <option>Ali</option>
-                                  <option>Abbos</option>
+                                <select   id="editable-select1" name="couriername" class="form-control" placeholder="Имя курера">
+                                  @foreach ($couriers as $courier)
+                                  <option value="{{$courier->flname}}">{{$courier->flname}}</option>
+                                  @endforeach
                                 </select>
                               </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                  <input type="text" class="form-control" name="amount" placeholder="Enter amount replenishment " value="{{$moneys->amount}}">
+                                  <input type="text" class="form-control" name="amount" placeholder="Введите сумму вклада">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <select name="type" class="form-control">
-                                      <option selected>Currency Type...</option>
-                                      <option>USD</option>
-                                      <option>RUB</option>
-                                      <option>UZS</option>
+                                      <option selected>Тип валюты...</option>
+                                      @foreach ($types as $type)
+                                  <option value="{{$type->type_name}}">{{$type->type_name}}</option>
+                                  @endforeach
                                     </select>
                                   </div>
                                   <div class="form-group col-md-4">
-                                    <select name="servicetype" class="form-control">
-                                      <option selected>Service Type...</option>
-                                      <option>Prepayment Cache</option>
-                                      <option>Prepayment Card</option>
-                                      <option>For transportation Cache</option>
-                                      <option>For transportation Card</option>
-                                      <option>Loan</option>
+                                    <select name="transactiontype" class="form-control">
+                                      <option selected>Тип  расхода...</option>
+                                      @foreach ($transactiontypes as $transactiontype)
+                                  <option value="{{$transactiontype->transactiontype}}">{{$transactiontype->transactiontype}}</option>
+                                  @endforeach
                                     </select>
                                   </div>
                               </div>
                               <div class="form-row">
                                 <div class="form-group col-md-12">
-                                  <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{$moneys->description}}</textarea>
+                                  <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                               </div>
                             <div class="form-group">
                               <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="gridCheck">
                                 <label class="form-check-label" for="gridCheck">
-                                  Send via Telegram Bot
+                                  Отправить отчет по телеграму
                                 </label>
                               </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
                           </form>
                     </div>
                 </div>
@@ -86,7 +75,9 @@
     </div>
 </x-app-layout>
 
-<script >$('#editable-select').editableSelect();</script>
+<script >$('#editable-select').editableSelect();
+$('#editable-select1').editableSelect();
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

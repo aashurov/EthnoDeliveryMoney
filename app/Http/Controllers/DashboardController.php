@@ -14,13 +14,19 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $usd_sum = MoneyModel::where('servicetype', '!=', 'Loan')->sum('usd');
-        $rub_sum = MoneyModel::where('servicetype', '!=', 'Loan')->sum('rub');
-        $uzs_sum = MoneyModel::where('servicetype', '!=', 'Loan')->sum('uzs');
+        $usd_sum = MoneyModel::where('servicetype', '!=', 'В Займы (нал.)', 'AND', '!=', 'В Займы (кар.)')
+        ->where('type', '=', 'USD')->sum('usd');
+        $rub_sum = MoneyModel::where('servicetype', '!=', 'В Займы (нал.)', 'AND', '!=', 'В Займы (кар.)')
+        ->where('type', '=', 'RUB')->sum('rub');
+        $uzs_sum = MoneyModel::where('servicetype', '!=', 'В Займы (нал.)', 'AND', '!=', 'В Займы (кар.)')
+        ->where('type', '=', 'UZS')->sum('uzs');
 
-        $usd_suml = MoneyModel::where('servicetype', '=', 'Loan')->sum('usd');
-        $rub_suml = MoneyModel::where('servicetype', '=', 'Loan')->sum('rub');
-        $uzs_suml = MoneyModel::where('servicetype', '=', 'Loan')->sum('uzs');
+        $usd_suml = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
+        ->where('type', '=', 'USD')->sum('usd');
+        $rub_suml = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
+        ->where('type', '=', 'RUB')->sum('rub');
+        $uzs_suml = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
+        ->where('type', '=', 'UZS')->sum('uzs');
 
         $customers = CustomerModel::get()->count();
         $couriers = CourierModel::get()->count();

@@ -14,24 +14,24 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                     <div>
-                        <x-jet-application-logo class="block h-12 w-auto" />
+                        {{-- <x-jet-application-logo class="block h-12 w-auto" /> --}}
                     </div>
                     <div class="mt-8 text-2xl">
-                        Please fill all of textboxes
+                        Пожалуйста запольните все поля
                     </div>
                     <div class="mt-6 text-gray-500">
                         <form method="POST" action={{route('savemoney')}}>
                             @csrf
                             <div class="form-row">
                               <div class="form-group col-md-6">
-                                <select id="editable-select" name="customername" class="form-control" placeholder="Customer Name">
+                                <select id="editable-select" name="customername" class="form-control" placeholder="Имя клиента">
                                   @foreach ($customers as $customer)
                                   <option value="{{$customer->flname}}">{{$customer->flname}}</option>
                                   @endforeach
                                 </select>
                               </div>
                               <div class="form-group col-md-6">
-                                <select   id="editable-select1" name="couriername" class="form-control" placeholder="Courier Name">
+                                <select   id="editable-select1" name="couriername" class="form-control" placeholder="Имя курера">
                                   @foreach ($couriers as $courier)
                                   <option value="{{$courier->flname}}">{{$courier->flname}}</option>
                                   @endforeach
@@ -40,11 +40,11 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                  <input type="text" class="form-control" name="amount" placeholder="Enter amount replenishment ">
+                                  <input type="text" class="form-control" name="amount" placeholder="Введите сумму вклада">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <select name="type" class="form-control">
-                                      <option selected>Currency Type...</option>
+                                      <option selected>Тип валюты...</option>
                                       @foreach ($types as $type)
                                   <option value="{{$type->type_name}}">{{$type->type_name}}</option>
                                   @endforeach
@@ -52,7 +52,7 @@
                                   </div>
                                   <div class="form-group col-md-4">
                                     <select name="servicetype" class="form-control">
-                                      <option selected>Service Type...</option>
+                                      <option selected>Тип сервиса...</option>
                                       @foreach ($servicetypes as $servicetype)
                                   <option value="{{$servicetype->service_name}}">{{$servicetype->service_name}}</option>
                                   @endforeach
@@ -68,11 +68,11 @@
                               <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="gridCheck">
                                 <label class="form-check-label" for="gridCheck">
-                                  Send via Telegram Bot
+                                  Отправить отчет по телеграму
                                 </label>
                               </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
                           </form>
                     </div>
                 </div>
