@@ -26,7 +26,7 @@
                               <div class="form-group col-md-6">
                                 <select id="editable-select" name="customername" class="form-control" placeholder="Имя клиента">
                                   @foreach ($customers as $customer)
-                                  <option value="{{$customer->flname}}">{{$customer->flname}}</option>
+                                  <option value="{{$customer->flname}}">{{$customer->c_id}} {{$customer->flname}} {{$customer->phone_number}}</option>
                                   @endforeach
                                 </select>
                               </div>
@@ -39,10 +39,10 @@
                               </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                   <input type="text" class="form-control" name="amount" placeholder="Введите сумму вклада">
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <select name="type" class="form-control">
                                       <option selected>Тип валюты...</option>
                                       @foreach ($types as $type)
@@ -50,12 +50,22 @@
                                   @endforeach
                                     </select>
                                   </div>
-                                  <div class="form-group col-md-4">
+                                  <div class="form-group col-md-3">
                                     <select name="servicetype" class="form-control">
                                       <option selected>Тип сервиса...</option>
                                       @foreach ($servicetypes as $servicetype)
                                   <option value="{{$servicetype->service_name}}">{{$servicetype->service_name}}</option>
                                   @endforeach
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <select name="status" class="form-control">
+                                      <option selected>Статус...</option>
+                                      {{-- @foreach ($servicetypes as $servicetype) --}}
+                                  {{-- <option value="{{$servicetype->service_name}}">{{$servicetype->service_name}}</option> --}}
+                                  <option value="Принят">Принят</option>
+                                  <option value="Не Принят">Не Принят</option>
+                                  {{-- @endforeach --}}
                                     </select>
                                   </div>
                               </div>

@@ -23,16 +23,18 @@
                         <form method="POST" action={{route('updatemoney', $moneys->id)}}>
                             @csrf
                             <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="customername"  value="{{$moneys->customer_id}}">
-
+                              <div class="form-group col-md-4">
+                                <input type="text" class="form-control" name="customer_id"  value="{{$moneys->customer_id}}">
                               </div>
-                              <div class="form-group col-md-6">
+                              <div class="form-group col-md-4">
+                                <input type="text" class="form-control" name="customername"  value="{{$moneys->customer_name}}">
+                              </div>
+                              <div class="form-group col-md-4">
                                   <input type="text" class="form-control" name="couriername"  value="{{$moneys->courier_id}}">
                               </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                   @if ($moneys->type=='USD')
                                   <input type="text" class="form-control" name="amount"  value="{{$moneys->usd }}" placeholder="Enter amount replenishment ">
                                   @endif
@@ -44,7 +46,7 @@
                                   @endif
       
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <select name="type" class="form-control">
                                       @if ($moneys->type == "USD")
                                         <option value="{{$moneys->type}}" selected>{{$moneys->type}}</option>
@@ -64,7 +66,7 @@
                                     </select>
                                   </div>
 
-                                  <div class="form-group col-md-4">
+                                  <div class="form-group col-md-3">
                                     <select name="servicetype" class="form-control">
                                       @if ($moneys->servicetype == "Предоплата (нал.)")
                                         <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
@@ -195,6 +197,21 @@
                                       
                                   </select>
 
+                                  </div>
+                                  <div class="form-group col-md-3">
+
+                                    <select name="status" class="form-control">
+                                    @if ($moneys->status == "Принят")
+                                      <option value="{{$moneys->status}}" selected>{{$moneys->status}}</option>
+                                      <option value="Не Принят">Не Принят</option>
+                                    @endif
+
+                                      @if ($moneys->status == "Не Принят")
+                                        <option value="Принят">Принят</option>
+                                        <option value="{{$moneys->status}}" selected>{{$moneys->status}}</option>
+                                        @endif
+
+                                      </select>
                                   </div>
                               </div>
                               <div class="form-row">

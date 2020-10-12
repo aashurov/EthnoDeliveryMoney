@@ -35,7 +35,12 @@ class MoneyController extends Controller
     {
         $current = Carbon::now();
         $money = new MoneyModel();
-        $money->customer_id = $request->customername;
+
+        $result = explode(" ", $request->customername, 3);
+
+        $money->customer_id = $result[0];
+        $money->customer_name = $result[1];
+
         if ($request->couriername == '')
         {
             $money->courier_id = 'В офисе';
@@ -74,9 +79,13 @@ class MoneyController extends Controller
         $money->servicetype = $request->servicetype;
         $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy[0]->rub_usd. " Рубль к суму: ".$currencyy[0]->rub_uzs. " Сум к доллару: ".$currencyy[0]->uzs_usd;
         $money->dategive = $current->format('d-m-y');
-        $money->status = 'Принят';
+        $money->status = $request->status;
         $money->datereceive = $current->format('d-m-y');
+    //    dd($request->all());
         $money->save();
+
+        if ($request->servicetype == 'Предоплата (нал.)' OR $request->servicetype == 'Предоплата (кар.)')
+        {
         $response = Telegram::getMe();
 
         $botId = $response->getId();
@@ -104,6 +113,7 @@ class MoneyController extends Controller
             ]);
           
           $messageId = $response->getMessageId();
+        }
         return back();
 
         // Telegram::setAsyncRequest(true)
@@ -125,7 +135,9 @@ class MoneyController extends Controller
         $current = Carbon::now();
         $money =  MoneyModel::find($id);
         // dd($money);
-        $money->customer_id = $request->customername;
+        $money->customer_id = $request->customer_id;
+        $money->customer_name = $request->customername;
+
          if ($request->couriername == '')
         {
             $money->courier_id = 'В офисе';
@@ -165,7 +177,8 @@ class MoneyController extends Controller
         $money->servicetype = $request->servicetype;
         $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy[0]->rub_usd. " Рубль к суму: ".$currencyy[0]->rub_uzs. " Сум к доллару: ".$currencyy[0]->uzs_usd;
         $money->dategive = $current->format('d-m-y');
-        $money->status = 'Принят';
+        $money->status = $request->status;
+
         $money->datereceive = $current->format('d-m-y');
         // dd($request->all());
         $money->save();

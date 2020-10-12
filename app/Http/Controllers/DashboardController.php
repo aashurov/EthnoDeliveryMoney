@@ -10,6 +10,7 @@ use App\Models\CourierModel;
 use App\Models\TypeModel;
 use App\Models\ServiceTypeModel;
 use App\Models\CurrencyModel;
+use App\Models\TransactionModel;
 class DashboardController extends Controller
 {
     public function dashboard()
@@ -28,6 +29,10 @@ class DashboardController extends Controller
         $uzs_suml = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
         ->where('type', '=', 'UZS')->sum('uzs');
 
+        $usd_sumtr = TransactionModel::where('type', '=', 'USD')->sum('usd');
+        $rub_sumtr = TransactionModel::where('type', '=', 'RUB')->sum('rub');
+        $uzs_sumtr = TransactionModel::where('type', '=', 'UZS')->sum('uzs');
+
         $customers = CustomerModel::get()->count();
         $couriers = CourierModel::get()->count();
 
@@ -39,7 +44,10 @@ class DashboardController extends Controller
                                   'rub_suml'=>$rub_suml, 
                                   'uzs_suml'=>$uzs_suml,
                                   'customers'=>$customers,
-                                  'couriers'=>$couriers
+                                  'couriers'=>$couriers,
+                                  'usd_sumtr'=>$usd_sumtr,
+                                  'rub_sumtr'=>$rub_sumtr,
+                                  'uzs_sumtr'=>$uzs_sumtr
                                   ]);
     }
 }

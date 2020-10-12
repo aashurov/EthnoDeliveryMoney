@@ -31,7 +31,8 @@
                         <thead>
                           <tr>
                             <th scope="col">№</th>
-                            <th scope="col">Клиент</th>
+                            <th scope="col">ID Клиента</th>
+                            <th scope="col">Имя Клиент</th>
                             <th scope="col">Курер</th>
                             <th scope="col">USD</th>
                             <th scope="col">RUB</th>
@@ -53,7 +54,8 @@
                         @foreach ($moneys as $money)
                             <tr>
                                 <td>{{ ++$i }}</td>
-                                <td>{{ $money->customer_id }}</td>
+                                <td>{{ $money->customer_id}}</td>
+                                <td>{{ $money->customer_name}}</td>
                                 <td>{{ $money->courier_id }}</td>
                                 <td>{{ $money->usd }}</td>
                                 <td>{{ $money->rub }}</td>
