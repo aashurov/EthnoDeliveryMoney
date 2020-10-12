@@ -99,7 +99,7 @@ class MoneyController extends Controller
         TEXT;
         
         $response = Telegram::sendMessage([
-            'chat_id' => '971040970', 
+            'chat_id' => '-440693516', 
             'text'=>$message
             ]);
           

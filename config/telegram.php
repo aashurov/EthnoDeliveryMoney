@@ -41,6 +41,7 @@ return [
                 //Acme\Project\Commands\MyTelegramBot\BotCommand::class
             ],
         ],
+        //"-440693516"
        // https://api.telegram.org/bot1297205833:AAGvt0eLPOP9FYFjb851ZWPriIG0-biQD3Q/getWebhookInfo
         //https://api.telegram.org/bot1297205833:AAGvt0eLPOP9FYFjb851ZWPriIG0-biQD3Q/getUpdates
         //https://api.telegram.org/bot1297205833:AAGvt0eLPOP9FYFjb851ZWPriIG0-biQD3Q/setWebhook?url=https://www.edmoney.uz/edmoney_bot
