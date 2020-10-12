@@ -31,6 +31,7 @@
                         <thead>
                           <tr>
                             <th scope="col">№</th>
+                            <th scope="col">ID Клиента</th>
                             <th scope="col">Имя Клиента</th>
                             <th scope="col">Контакты</th>
                             <th scope="col">Действия</th>
@@ -44,6 +45,7 @@
                         @foreach ($customers as $customer)
                             <tr>
                                 <td>{{ ++$i }}</td>
+                                <td>{{ $customer->c_id }}</td>
                                 <td>{{ $customer->flname }}</td>
                                 <td>{{ $customer->phone_number}}</td>
                                 <td>

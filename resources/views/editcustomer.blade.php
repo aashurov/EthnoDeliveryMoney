@@ -23,6 +23,9 @@
                         <form method="POST" action={{route('updatecustomer', $customers->id)}}>
                             @csrf
                             <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" name="customernumber" placeholder="Введите ID клиента">
+                                  </div>
                               <div class="form-group col-md-6">
                                 <input value="{{$customers->flname}}" type="text" class="form-control" name="customername" placeholder="Введите имя клиента">
                               </div>

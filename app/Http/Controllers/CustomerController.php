@@ -22,6 +22,7 @@ class CustomerController extends Controller
     public function savecustomer(Request $request)
     {
         $customers = new CustomerModel();
+        $customers->c_id = $request->customernumber;
         $customers->flname = $request->customername;
         $customers->phone_number = $request->phonenumber;
         $customers->save();
@@ -39,6 +40,8 @@ class CustomerController extends Controller
     public function updatecustomer(Request $request, $id)
     {
         $customers =  CustomerModel::find($id);
+        $customers->c_id = $request->customernumber;
+
         $customers->flname = $request->customername;
         $customers->phone_number = $request->phonenumber;
         $customers->save();
