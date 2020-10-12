@@ -17,7 +17,7 @@ class MoneyController extends Controller
     public function listmoney(MoneyDataTables $dataTables)
     {
         // $moneys = MoneyModel::all();
-        $moneys = MoneyModel::paginate(10);
+        $moneys = MoneyModel::orderBy('created_at', 'desc')->paginate(10);
 
         return view('listmoney', compact('moneys'));
     }
@@ -184,7 +184,7 @@ class MoneyController extends Controller
         $money->save();
         // $money->where('id', $id)->update($request->all());
     //    return view('listmoney');
-        $moneys = MoneyModel::paginate(10);
+        $moneys = MoneyModel::orderBy('created_at', 'desc')->paginate(10);
 
        return view('listmoney', compact('moneys'));
 

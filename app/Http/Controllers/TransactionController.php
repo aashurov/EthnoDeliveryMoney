@@ -17,7 +17,7 @@ class TransactionController extends Controller
 {
    public function listtransaction()
    {
-    $transactions = TransactionModel::paginate(10);
+    $transactions = TransactionModel::orderBy('created_at', 'desc')->paginate(10);
     return view('listtransaction', compact('transactions'));
    }
    public function addtransaction()
@@ -147,7 +147,7 @@ class TransactionController extends Controller
         $transaction->description = $request->description . "   Текуший курсы: " . " Рубль к доллару: ".$currencyy[0]->rub_usd. " Рубль к суму: ".$currencyy[0]->rub_uzs. " Сум к доллару: ".$currencyy[0]->uzs_usd;
         $transaction->datecreate = $current->format('d-m-y');
         $transaction->save();
-        $transactions = TransactionModel::paginate(10);
+        $transactions = TransactionModel::orderBy('created_at', 'desc')->paginate(10);
 
        return view('listtransaction', compact('transactions'));
 
