@@ -70,6 +70,8 @@
                                   <form action="{{route('deletemoney', $money->id)}}" method="POST", enctype="multipart/form-data">
                                     @csrf
                                     @method('POST')
+                                    <a class="btn btn-success btn-sm" href="{{ route('editmoney',$money->id) }}"><i class="fa fa-eye"></i></a>
+
                                     <a class="btn btn-warning btn-sm" href="{{ route('editmoney',$money->id) }}"><i class="fa fa-pencil"></i></a>
                                     <button class="btn btn-danger btn-sm" type="submit">
                                       <i class="fa fa-trash"></i></button>
