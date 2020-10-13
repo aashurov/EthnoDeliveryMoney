@@ -9,7 +9,7 @@ class CustomerController extends Controller
 {
     public function listcustomer()
     {
-        $customers = CustomerModel::all();
+        $customers = CustomerModel::orderBy('created_at', 'desc')->paginate(10);
         return view('listcustomer', ['customers'=>$customers]);
     }
 
@@ -26,7 +26,7 @@ class CustomerController extends Controller
         $customers->flname = $request->customername;
         $customers->phone_number = $request->phonenumber;
         $customers->save();
-        $customerss = CustomerModel::all();
+        $customerss = CustomerModel::orderBy('created_at', 'desc')->paginate(10);
         return view('listcustomer', ['customers'=>$customerss]);
     }
 
@@ -46,7 +46,7 @@ class CustomerController extends Controller
         $customers->phone_number = $request->phonenumber;
         $customers->save();
 
-        $customer = CustomerModel::all();
+        $customer = CustomerModel::orderBy('created_at', 'desc')->paginate(10);
 
         return view('listcustomer', ['customers'=>$customer]);
 

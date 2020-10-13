@@ -62,6 +62,8 @@
                           </tr>
                         </tbody>
                       </table>
+                      {{$customers->render()}}
+
                     </div>
                     </div>
                 </div>
