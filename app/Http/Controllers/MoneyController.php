@@ -94,7 +94,7 @@ class MoneyController extends Controller
 
         $message = <<<TEXT
         --------------------------------------------
-        Имя клиента: $money->customer_id
+        Имя клиента: $money->customer_name
         Имя курера: $money->courier_id
         Сумма в $: $money->usd
         Сумма в рублях: $money->rub
