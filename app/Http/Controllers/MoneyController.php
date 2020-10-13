@@ -184,6 +184,15 @@ class MoneyController extends Controller
         }
 
         $money->type = $request->type;
+        if (Auth::user()->email == 'a.o.ashurov@gmail.com')
+        {
+        $money->branch = 'UZ';
+
+        }
+        else if (Auth::user()->email == 'alibay@gmail.com')
+        {
+        $money->branch = 'RU';
+        }
         $money->servicetype = $request->servicetype;
         $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy[0]->rub_usd. " Рубль к суму: ".$currencyy[0]->rub_uzs. " Сум к доллару: ".$currencyy[0]->uzs_usd;
         $money->dategive = $current->format('d-m-y');
