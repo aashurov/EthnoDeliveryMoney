@@ -21,6 +21,7 @@ class CreateMoneyTable extends Migration
             $table->string('rub');
             $table->string('uzs');
             $table->string('type');// pul qaysi valyutada berildi
+            $table->string('branch');
             $table->string('servicetype'); // pul nimaga olindi yani qarzmi predoplatami perevozkagami
             $table->string('dategive'); // pul qachon olindi klientdan 
             $table->string('status'); // pul olindi(kurerni qulida) yoki kassaga kelib tushdi (kurer kassaga topshirdi)

@@ -38,6 +38,7 @@
                             <th scope="col">RUB</th>
                             <th scope="col">UZS</th>
                             <th scope="col">Тип</th>
+                            <th scope="col">Филиал</th>
                             <th scope="col">Тип сервиса</th>
                             <th scope="col">Дата взятие</th>
                             <th scope="col">Статус</th>
@@ -61,6 +62,7 @@
                                 <td>{{ $money->rub }}</td>
                                 <td>{{ $money->uzs }}</td>
                                 <td>{{ $money->type }}</td>
+                                <td>{{ $money->branch}}</td>
                                 <td>{{ $money->servicetype }}</td>
                                 <td>{{ $money->dategive }}</td>
                                 <td>{{ $money->status }}</td>

@@ -9,5 +9,5 @@ class MoneyModel extends Model
 {
     use HasFactory;
     protected $table = 'money';
-    protected $fillable = ['customer_id','courier_id','usd','rub','uzs','type','servicetype','description'];
+    protected $fillable = ['customer_id','courier_id','usd','rub','uzs','type', 'branch', 'servicetype','description'];
 }
