@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CustomerModel;
+use App\Models\MoneyModel;
+
 
 class CustomerController extends Controller
 {
@@ -33,7 +35,8 @@ class CustomerController extends Controller
     public function editcustomer($id)
     {
         $customers = CustomerModel::find($id);
-        return view('editcustomer', ['customers'=>$customers]);
+        $forcustomers = MoneyModel::where('customer_id', $customers->c_id)->orderBy('created_at', 'desc')->paginate(50);
+        return view('editcustomer', ['customers'=>$customers, 'forcustomers'=>$forcustomers]);
 
         
     }
