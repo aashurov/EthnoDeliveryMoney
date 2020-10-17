@@ -15,6 +15,13 @@ use Telegram;
 use Carbon\Carbon;
 class MoneyController extends Controller
 {
+
+public function listmoneys()
+{
+    $moneys = MoneyModel::orderBy('created_at', 'desc')->paginate(50);
+
+}
+
     public function listmoney(MoneyDataTables $dataTables)
     {
         // $moneys = MoneyModel::all();
@@ -22,6 +29,7 @@ class MoneyController extends Controller
         // dd(Auth::user()->name);
         return view('listmoney', compact('moneys'));
     }
+
 
     public function addmoney()
     {

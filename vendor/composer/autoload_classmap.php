@@ -45,6 +45,7 @@ return array(
     'App\\Models\\ServiceTypeModel' => $baseDir . '/app/Models/ServiceTypeModel.php',
     'App\\Models\\Team' => $baseDir . '/app/Models/Team.php',
     'App\\Models\\TransactionModel' => $baseDir . '/app/Models/TransactionModel.php',
+    'App\\Models\\TransactionTypeModel' => $baseDir . '/app/Models/TransactionTypeModel.php',
     'App\\Models\\TypeModel' => $baseDir . '/app/Models/TypeModel.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Policies\\TeamPolicy' => $baseDir . '/app/Policies/TeamPolicy.php',

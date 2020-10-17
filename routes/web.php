@@ -32,6 +32,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/editmoney/{id}', [MoneyCo
 Route::middleware(['auth:sanctum', 'verified'])->post('/updatemoney/{id}', [MoneyController::class, 'updatemoney'])->name('updatemoney');
 Route::middleware(['auth:sanctum', 'verified'])->post('/deletemoney/{id}', [MoneyController::class, 'deletemoney'])->name('deletemoney');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/listmoneys', [MoneyController::class, 'listmoneys'])->name('listmoneys');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/listcustomer', [CustomerController::class, 'listcustomer'])->name('listcustomer');
 Route::middleware(['auth:sanctum', 'verified'])->get('/addcustomer', [CustomerController::class, 'addcustomer'])->name('addcustomer');

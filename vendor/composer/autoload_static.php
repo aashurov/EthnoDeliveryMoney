@@ -745,6 +745,7 @@ class ComposerStaticInit562eb3cea8628bd6e8f420e8708a2bbf
         'App\\Models\\ServiceTypeModel' => __DIR__ . '/../..' . '/app/Models/ServiceTypeModel.php',
         'App\\Models\\Team' => __DIR__ . '/../..' . '/app/Models/Team.php',
         'App\\Models\\TransactionModel' => __DIR__ . '/../..' . '/app/Models/TransactionModel.php',
+        'App\\Models\\TransactionTypeModel' => __DIR__ . '/../..' . '/app/Models/TransactionTypeModel.php',
         'App\\Models\\TypeModel' => __DIR__ . '/../..' . '/app/Models/TypeModel.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Policies\\TeamPolicy' => __DIR__ . '/../..' . '/app/Policies/TeamPolicy.php',
