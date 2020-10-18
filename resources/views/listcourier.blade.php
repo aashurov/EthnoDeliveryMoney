@@ -5,11 +5,20 @@
         </h2>
     </x-slot>
 
+    
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://dn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-   <div class="py-12">
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.dataTables.min.css">
+    
+    <style>
+      thead input {
+        width: 100%;
+    }
+    </style> <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200" >
@@ -72,38 +81,68 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.10.21/i18n/Russian.json"></script>
 
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"  ></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"  ></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"  ></script>
+
+
+
+
 <script> 
 $(document).ready(function() {
-    $('#example').DataTable( {
-        "language": {
-  "processing": "Подождите...",
-  "search": "Поиск:",
-  "lengthMenu": "Показать _MENU_ записей",
-  "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
-  "infoEmpty": "Записи с 0 до 0 из 0 записей",
-  "infoFiltered": "(отфильтровано из _MAX_ записей)",
-  "infoPostFix": "",
-  "loadingRecords": "Загрузка записей...",
-  "zeroRecords": "Записи отсутствуют.",
-  "emptyTable": "В таблице отсутствуют данные",
-  "paginate": {
-    "first": "Первая",
-    "previous": "Предыдущая",
-    "next": "Следующая",
-    "last": "Последняя"
-  },
-  "aria": {
-    "sortAscending": ": активировать для сортировки столбца по возрастанию",
-    "sortDescending": ": активировать для сортировки столбца по убыванию"
-  },
-  "select": {
-    "rows": {
-      "_": "Выбрано записей: %d",
-      "0": "Кликните по записи для выбора",
-      "1": "Выбрана одна запись"
-    }
-  }
-}
+  
+    // Setup - add a text input to each footer cell
+    $('#example thead tr').clone(true).appendTo( '#example thead' );
+    $('#example thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder=" '+title+'" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
     } );
+ 
+    var table = $('#example').DataTable( {
+      
+        orderCellsTop: true,
+        fixedHeader: true,
+        language: {
+          "processing": "Подождите...",
+          "search": "Поиск:",
+          "lengthMenu": "Показать _MENU_ записей",
+          "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+          "infoEmpty": "Записи с 0 до 0 из 0 записей",
+          "infoFiltered": "(отфильтровано из _MAX_ записей)",
+          "infoPostFix": "",
+          "loadingRecords": "Загрузка записей...",
+          "zeroRecords": "Записи отсутствуют.",
+          "emptyTable": "В таблице отсутствуют данные",
+          "paginate": {
+            "first": "Первая",
+            "previous": "Предыдущая",
+            "next": "Следующая",
+            "last": "Последняя"
+          },
+          "aria": {
+            "sortAscending": ": активировать для сортировки столбца по возрастанию",
+            "sortDescending": ": активировать для сортировки столбца по убыванию"
+          },
+          "select": {
+            "rows": {
+              "_": "Выбрано записей: %d",
+              "0": "Кликните по записи для выбора",
+              "1": "Выбрана одна запись"
+            }
+            }
+    }
+    } );
+
+
+
 } );
   </script>
