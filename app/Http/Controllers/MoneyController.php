@@ -57,10 +57,11 @@ public function listmoneys()
         else {
         $money->courier_id = $request->couriername;
         }
-        $currencyy = CurrencyModel::all()->last();;
-         $rub_usd = floatval($currencyy[0]->rub_usd);
-         $rub_uzs = floatval($currencyy[0]->rub_uzs);
-         $uzs_usd = floatval($currencyy[0]->uzs_usd);
+        $currencyy = CurrencyModel::all()->last();
+        // dd($currencyy->rub_usd);
+         $rub_usd = floatval($currencyy->rub_usd);
+         $rub_uzs = floatval($currencyy->rub_uzs);
+         $uzs_usd = floatval($currencyy->uzs_usd);
         // dd($currencyy[0]->rub_usd);
         if ($request->type == 'USD')
         {
@@ -95,7 +96,7 @@ public function listmoneys()
         $money->branch = 'RU';
         }
         $money->servicetype = $request->servicetype;
-        $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy[0]->rub_usd. " Рубль к суму: ".$currencyy[0]->rub_uzs. " Сум к доллару: ".$currencyy[0]->uzs_usd;
+        $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy->rub_usd. " Рубль к суму: ".$currencyy->rub_uzs. " Сум к доллару: ".$currencyy->uzs_usd;
         $money->dategive = $current->format('d-m-y');
         $money->status = $request->status;
         $money->datereceive = $current->format('d-m-y');
@@ -163,10 +164,10 @@ public function listmoneys()
         else {
         $money->courier_id = $request->couriername;
         }
-        $currencyy = CurrencyModel::all()->last();;
-         $rub_usd = floatval($currencyy[0]->rub_usd);
-         $rub_uzs = floatval($currencyy[0]->rub_uzs);
-         $uzs_usd = floatval($currencyy[0]->uzs_usd);
+        $currencyy = CurrencyModel::all()->last();
+         $rub_usd = floatval($currencyy->rub_usd);
+         $rub_uzs = floatval($currencyy->rub_uzs);
+         $uzs_usd = floatval($currencyy->uzs_usd);
 
         if ($request->type == 'USD')
         {
@@ -202,7 +203,7 @@ public function listmoneys()
         $money->branch = 'RU';
         }
         $money->servicetype = $request->servicetype;
-        $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy[0]->rub_usd. " Рубль к суму: ".$currencyy[0]->rub_uzs. " Сум к доллару: ".$currencyy[0]->uzs_usd;
+        $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy->rub_usd. " Рубль к суму: ".$currencyy->rub_uzs. " Сум к доллару: ".$currencyy->uzs_usd;
         $money->dategive = $current->format('d-m-y');
         $money->status = $request->status;
 
