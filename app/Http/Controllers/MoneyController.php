@@ -57,7 +57,7 @@ public function listmoneys()
         else {
         $money->courier_id = $request->couriername;
         }
-        $currencyy = CurrencyModel::get();
+        $currencyy = CurrencyModel::all()->last();;
          $rub_usd = floatval($currencyy[0]->rub_usd);
          $rub_uzs = floatval($currencyy[0]->rub_uzs);
          $uzs_usd = floatval($currencyy[0]->uzs_usd);
@@ -163,7 +163,7 @@ public function listmoneys()
         else {
         $money->courier_id = $request->couriername;
         }
-        $currencyy = CurrencyModel::get();
+        $currencyy = CurrencyModel::all()->last();;
          $rub_usd = floatval($currencyy[0]->rub_usd);
          $rub_uzs = floatval($currencyy[0]->rub_uzs);
          $uzs_usd = floatval($currencyy[0]->uzs_usd);
