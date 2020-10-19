@@ -28,14 +28,14 @@ class CustomerController extends Controller
         $customers->flname = $request->customername;
         $customers->phone_number = $request->phonenumber;
         $customers->save();
-        $customerss = CustomerModel::orderBy('created_at', 'desc')->paginate(10);
+        $customerss = CustomerModel::orderBy('created_at', 'desc')->get();
         return view('listcustomer', ['customers'=>$customerss]);
     }
 
     public function editcustomer($id)
     {
         $customers = CustomerModel::find($id);
-        $forcustomers = MoneyModel::where('customer_id', $customers->c_id)->orderBy('created_at', 'desc')->paginate(50);
+        $forcustomers = MoneyModel::where('customer_id', $customers->c_id)->orderBy('created_at', 'desc')->get();
         return view('editcustomer', ['customers'=>$customers, 'forcustomers'=>$forcustomers]);
 
         
@@ -49,7 +49,7 @@ class CustomerController extends Controller
         $customers->phone_number = $request->phonenumber;
         $customers->save();
 
-        $customer = CustomerModel::orderBy('created_at', 'desc')->paginate(10);
+        $customer = CustomerModel::orderBy('created_at', 'desc')->get();
 
         return view('listcustomer', ['customers'=>$customer]);
 
