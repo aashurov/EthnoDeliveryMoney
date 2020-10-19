@@ -9,7 +9,7 @@ class CourierController extends Controller
 {
     public function listcourier()
     {
-        $couriers = courierModel::all();
+        $couriers = CourierModel::orderBy('created_at', 'desc')->get();
         return view('listcourier', ['couriers'=>$couriers]);
     }
 
@@ -21,36 +21,36 @@ class CourierController extends Controller
 
     public function savecourier(Request $request)
     {
-        $couriers = new courierModel();
+        $couriers = new CourierModel();
         $couriers->flname = $request->couriername;
         $couriers->phone_number = $request->phonenumber;
         $couriers->save();
-        $courierss = courierModel::all();
+        $courierss = CourierModel::all();
         return view('listcourier', ['couriers'=>$courierss]);
     }
 
     public function editcourier($id)
     {
-        $couriers = courierModel::find($id);
+        $couriers = CourierModel::find($id);
         return view('editcourier', ['couriers'=>$couriers]);
 
         
     }
     public function updatecourier(Request $request, $id)
     {
-        $couriers =  courierModel::find($id);
+        $couriers =  CourierModel::find($id);
         $couriers->flname = $request->couriername;
         $couriers->phone_number = $request->phonenumber;
         $couriers->save();
 
-        $courier = courierModel::all();
+        $courier = CourierModel::orderBy('created_at', 'desc')->get();
 
         return view('listcourier', ['couriers'=>$courier]);
 
     }
     public function deletecourier($id)
     {
-        $courier = courierModel::where('id',$id)->delete();
+        $courier = CourierModel::where('id',$id)->delete();
         return redirect()->route('listcourier');
     }
 

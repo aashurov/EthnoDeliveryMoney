@@ -11,7 +11,7 @@ class CustomerController extends Controller
 {
     public function listcustomer()
     {
-        $customers = CustomerModel::orderBy('created_at', 'desc')->paginate(10);
+        $customers = CustomerModel::orderBy('created_at', 'desc')->get();
         return view('listcustomer', ['customers'=>$customers]);
     }
 

@@ -17,6 +17,14 @@
       thead input {
         width: 100%;
     }
+
+    table td {
+        max-width: 120px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        overflow: hidden;
+            }
     </style>
       <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -39,11 +47,11 @@
                       <table id="example" class="display compact" style="width:100%">
                         <thead>
                             <tr>
-                              <th scope="col">№</th>
-                              <th scope="col">ID Клиента</th>
-                              <th scope="col">Имя Клиента</th>
-                              <th scope="col">Контакты</th>
-                              <th scope="col">Действия</th>
+                              <th scope="col" style="text-align:center width:5%" >№</th>
+                              <th scope="col" style="text-align:center width:5%">ID Клиента</th>
+                              <th scope="col" style="text-align:left width:50%">Имя Клиента</th>
+                              <th scope="col" style="text-align:center width:5%">Контакты</th>
+                              <th scope="col" style="text-align:center width:5%">Действия</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,18 +60,18 @@
                         @endphp
                         @foreach ($customers as $customer)
                         <tr>
-                          <td>{{ ++$i }}</td>
-                          <td>{{ $customer->c_id }}</td>
-                          <td>{{ $customer->flname }}</td>
-                          <td>{{ $customer->phone_number}}</td>
-                          <td>
+                          <td style="text-align:center">{{ ++$i }}</td>
+                          <td style="text-align:center">{{ $customer->c_id }}</td>
+                          <td style="text-align:left">{{ $customer->flname }}</td>
+                          <td style="text-align:center">{{ $customer->phone_number}}</td>
+                          <td style="text-align:center">
                             <form action="{{route('deletecustomer', $customer->id)}}" method="POST", enctype="multipart/form-data">
                               @csrf
                               @method('POST')
-                              <a class="btn btn-success btn-sm" href="{{ route('editcustomer',$customer->id) }}"><i class="fa fa-eye"></i></a>
+                              <a class="" href="{{ route('editcustomer',$customer->id) }}"><i class="fa fa-eye"></i></a>
 
-                              <a class="btn btn-warning btn-sm" href="{{ route('editcustomer',$customer->id) }}"><i class="fa fa-pencil"></i></a>
-                              <button class="btn btn-danger btn-sm" type="submit">
+                              <a class="" href="{{ route('editcustomer',$customer->id) }}"><i class="fa fa-pencil"></i></a>
+                              <button class="" type="submit">
                                 <i class="fa fa-trash"></i></button>
                             </form>
                             </td>

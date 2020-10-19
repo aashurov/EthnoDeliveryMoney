@@ -18,7 +18,18 @@
       thead input {
         width: 100%;
     }
-    </style> <div class="py-12">
+
+    table td {
+max-width: 120px;
+white-space: nowrap;
+text-overflow: ellipsis;
+word-break: break-all;
+overflow: hidden;
+}
+    </style>
+    
+    
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200" >
@@ -39,10 +50,10 @@
                       <table id="example" class="display compact" style="width:100%">
                         <thead>
                             <tr>
-                              <th scope="col">№</th>
-                              <th scope="col">Имя Курера</th>
-                              <th scope="col">Контакты</th>
-                              <th scope="col">Действия</th>
+                              <th scope="col" style="text-align:center  width:5%" >№</th>
+                              <th scope="col" style="text-align:center  width:50%" >Имя Курера</th>
+                              <th scope="col" style="text-align:center width:25%" >Контакты</th>
+                              <th scope="col" style="text-align:center  width:5%" >Действия</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,15 +62,15 @@
                       @endphp
                       @foreach ($couriers as $courier)
                           <tr>
-                              <td>{{ ++$i }}</td>
-                              <td>{{ $courier->flname }}</td>
-                              <td>{{ $courier->phone_number}}</td>
+                              <td style="text-align:center" >{{ ++$i }}</td>
+                              <td style="text-align:left" >{{ $courier->flname }}</td>
+                              <td style="text-align:center" >{{ $courier->phone_number}}</td>
                               <td>
                                 <form action="{{route('deletecourier', $courier->id)}}" method="POST", enctype="multipart/form-data">
                                   @csrf
                                   @method('POST')
-                                  <a class="btn btn-warning btn-sm" href="{{ route('editcourier',$courier->id) }}"><i class="fa fa-pencil"></i></a>
-                                  <button class="btn btn-danger btn-sm" type="submit">
+                                  <a class=" " href="{{ route('editcourier',$courier->id) }}"><i class="fa fa-pencil"></i></a>
+                                  <button class=" " type="submit">
                                     <i class="fa fa-trash"></i></button>
                                 </form>
                                 </td>
