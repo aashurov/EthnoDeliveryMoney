@@ -18,14 +18,14 @@ class MoneyController extends Controller
 
 public function listmoneys()
 {
-    $moneys = MoneyModel::orderBy('created_at', 'desc')->paginate(50);
+    $moneys = MoneyModel::orderBy('created_at', 'desc')->get();
 
 }
 
     public function listmoney(MoneyDataTables $dataTables)
     {
         // $moneys = MoneyModel::all();
-        $moneys = MoneyModel::orderBy('created_at', 'desc')->paginate(50);
+        $moneys = MoneyModel::orderBy('created_at', 'desc')->get();
         // dd(Auth::user()->name);
         return view('listmoney', compact('moneys'));
     }
@@ -212,7 +212,7 @@ public function listmoneys()
         $money->save();
         // $money->where('id', $id)->update($request->all());
     //    return view('listmoney');
-        $moneys = MoneyModel::orderBy('created_at', 'desc')->paginate(50);
+        $moneys = MoneyModel::orderBy('created_at', 'desc')->get();
 
        return view('listmoney', compact('moneys'));
 

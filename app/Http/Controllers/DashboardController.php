@@ -50,4 +50,9 @@ class DashboardController extends Controller
                                   'uzs_sumtr'=>$uzs_sumtr
                                   ]);
     }
+
+    public function listsorting()
+    {
+        return view('listsorting');
+    }
 }

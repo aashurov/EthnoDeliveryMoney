@@ -16,6 +16,14 @@
       thead input {
         width: 100%;
     }
+
+    table td {
+max-width: 120px;
+white-space: nowrap;
+text-overflow: ellipsis;
+word-break: break-all;
+overflow: hidden;
+}
     </style>
     
     <div class="py-10">
@@ -36,23 +44,23 @@
                           </div>
                         </div>
                       </div>
-                      <table id="example" class="display compact" style="width:100%">
+                      <table id="example" class="display compact cell-border" style="width:100%">
                         <thead>
                             <tr>
-                              <th scope="col">№</th>
-                              <th scope="col">ID Клиента</th>
-                              <th scope="col">Имя Клиент</th>
-                              <th scope="col">Курер</th>
-                              <th scope="col">USD</th>
-                              <th scope="col">RUB</th>
-                              <th scope="col">UZS</th>
-                              <th scope="col">Тип</th>
-                              <th scope="col">Филиал</th>
-                              <th scope="col">Тип сервиса</th>
-                              <th scope="col">Дата взятие</th>
-                              <th scope="col">Статус</th>
-                              <th scope="col">Дата принятие</th>
-                              <th scope="col">Действие</th>
+                              <th style="text-align:center" scope="col">№</th>
+                              <th style="text-align:center" scope="col">ID Клиента</th>
+                              <th style="text-align:center" scope="col">Имя Клиент</th>
+                              <th style="text-align:center" scope="col">Курер</th>
+                              <th style="text-align:center" scope="col">USD</th>
+                              <th style="text-align:center" scope="col">RUB</th>
+                              <th style="text-align:center" scope="col">UZS</th>
+                              <th style="text-align:center" scope="col">Тип</th>
+                              {{--style="text-align:center"  <th scope="col">Филиал</th> --}}
+                              <th style="text-align:center" scope="col">Тип сервиса</th>
+                              <th style="text-align:center" scope="col">Дата взятие</th>
+                              <th style="text-align:center" scope="col">Статус</th>
+                              <th style="text-align:center" scope="col">Дата принятие</th>
+                              <th style="text-align:center" scope="col">//</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,25 +69,25 @@
                       @endphp
                       @foreach ($moneys as $money)
                             <tr>
-                              <td>{{ ++$i }}</td>
-                                <td>{{ $money->customer_id}}</td>
-                                <td>{{ $money->customer_name}}</td>
-                                <td>{{ $money->courier_id }}</td>
-                                <td>{{ $money->usd }}</td>
-                                <td>{{ $money->rub }}</td>
-                                <td>{{ $money->uzs }}</td>
-                                <td>{{ $money->type }}</td>
-                                <td>{{ $money->branch}}</td>
-                                <td>{{ $money->servicetype }}</td>
-                                <td>{{ $money->dategive }}</td>
-                                <td>{{ $money->status }}</td>
-                                <td>{{ $money->datereceive }}</td>
-                                <td>
+                              <td width="1px" >{{ ++$i }}</td>
+                                <td style="text-align:center">{{ $money->customer_id}}</td>
+                                <td style="text-align:center">{{ $money->customer_name}}</td>
+                                <td style="text-align:center">{{ $money->courier_id }}</td>
+                                <td style="text-align:center">{{ $money->usd }}</td>
+                                <td style="text-align:center">{{ $money->rub }}</td>
+                                <td style="text-align:center">{{ $money->uzs }}</td>
+                                <td style="text-align:center">{{ $money->type }}</td>
+                                {{-- <td style="text-align:center">{{ $money->branch}}</td> --}}
+                                <td style="text-align:center">{{ $money->servicetype }}</td>
+                                <td style="text-align:center">{{ $money->dategive }}</td>
+                                <td style="text-align:center">{{ $money->status }}</td>
+                                <td style="text-align:center">{{ $money->datereceive }}</td>
+                                <td style="text-align:center" width="5px">
                                   <form action="{{route('deletemoney', $money->id)}}" method="POST", enctype="multipart/form-data">
                                     @csrf
                                     @method('POST')
-                                    <a class="btn btn-warning btn-sm" href="{{ route('editmoney',$money->id) }}"><i class="fa fa-pencil"></i></a>
-                                    <button class="btn btn-danger btn-sm" type="submit">
+                                    <a class="" href="{{ route('editmoney',$money->id) }}"><i class="fa fa-pencil"></i></a>
+                                    <button class="" type="submit">
                                       <i class="fa fa-trash"></i></button>
                                   </form>
                                   </td>
