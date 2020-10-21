@@ -36,6 +36,7 @@
                                         <th style="text-align:center" scope="col">Сегодня</th>
                                         <th style="text-align:center" scope="col">Вчера</th>
                                         <th style="text-align:center" scope="col">Прошлая неделя</th>
+                                        <th style="text-align:center" scope="col">Прошлые 7 дней</th>
                                         <th style="text-align:center" scope="col">Прошлый месяц</th>
                                         <th style="text-align:center" scope="col">За все время</th>
 
@@ -48,6 +49,7 @@
                                         <td style="text-align:center"> {{$usd_sumSP}}</td>
                                         <td style="text-align:center"> {{$usd_sumVP}}</td>
                                         <td style="text-align:center"> {{$usd_sumNP}}</td>
+                                        <td style="text-align:center"> {{$usd_sumN7}}</td>
                                         <td style="text-align:center"> {{$usd_sumMP}} </td>
                                         <td style="text-align:center"> {{$usd_sumALLP}}</td>
 
@@ -57,6 +59,7 @@
                                         <td style="text-align:center"> {{$rub_sumSP}}</td>
                                         <td style="text-align:center"> {{$rub_sumVP}}</td>
                                         <td style="text-align:center"> {{$rub_sumNP}}</td>
+                                        <td style="text-align:center"> {{$rub_sumN7}}</td>
                                         <td style="text-align:center"> {{$rub_sumMP}}</td>
                                         <td style="text-align:center"> {{$rub_sumALLP}}</td>
 
@@ -66,6 +69,7 @@
                                         <td style="text-align:center"> {{$uzs_sumSP}}</td>
                                         <td style="text-align:center"> {{$uzs_sumVP}}</td>
                                         <td style="text-align:center"> {{$uzs_sumNP}}</td>
+                                        <td style="text-align:center"> {{$uzs_sumN7}}</td>
                                         <td style="text-align:center"> {{$uzs_sumMP}}</td>
                                         <td style="text-align:center"> {{$uzs_sumALLP}}</td>
 
@@ -156,6 +160,7 @@
                                         <th style="text-align:center" scope="col">Сегодня</th>
                                         <th style="text-align:center" scope="col">Вчера</th>
                                         <th style="text-align:center" scope="col">Прошлая неделя</th>
+                                        <th style="text-align:center" scope="col">Прошлые 7 дней</th>
                                         <th style="text-align:center" scope="col">Прошлый месяц</th>
                                         <th style="text-align:center" scope="col">За все время</th>
 
@@ -168,6 +173,7 @@
                                         <td style="text-align:center"> {{$usd_sumSD}}</td>
                                         <td style="text-align:center"> {{$usd_sumVD}}</td>
                                         <td style="text-align:center"> {{$usd_sumND}}</td>
+                                        <td style="text-align:center"> {{$usd_sumND7}}</td>
                                         <td style="text-align:center"> {{$usd_sumMD}} </td>
                                         <td style="text-align:center"> {{$usd_sumALLD}}</td>
 
@@ -177,6 +183,7 @@
                                         <td style="text-align:center"> {{$rub_sumSD}}</td>
                                         <td style="text-align:center"> {{$rub_sumVD}}</td>
                                         <td style="text-align:center"> {{$rub_sumND}}</td>
+                                        <td style="text-align:center"> {{$rub_sumND7}}</td>
                                         <td style="text-align:center"> {{$rub_sumMD}}</td>
                                         <td style="text-align:center"> {{$rub_sumALLD}}</td>
 
@@ -186,6 +193,7 @@
                                         <td style="text-align:center"> {{$uzs_sumSD}}</td>
                                         <td style="text-align:center"> {{$uzs_sumVD}}</td>
                                         <td style="text-align:center"> {{$uzs_sumND}}</td>
+                                        <td style="text-align:center"> {{$uzs_sumND7}}</td>
                                         <td style="text-align:center"> {{$uzs_sumMD}}</td>
                                         <td style="text-align:center"> {{$uzs_sumALLD}}</td>
 

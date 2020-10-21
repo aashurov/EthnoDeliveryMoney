@@ -84,6 +84,14 @@ class DashboardController extends Controller
         $uzs_sumNP = MoneyModel::where('servicetype', '!=', 'В Займы (нал.)', 'AND', '!=', 'В Займы (кар.)')
         ->where('type', '=', 'UZS')->whereBetween('created_at', [$start_week, $end_week])->sum('uzs');
 
+        $usd_sumN7 = MoneyModel::where('servicetype', '!=', 'В Займы (нал.)', 'AND', '!=', 'В Займы (кар.)')
+        ->where('type', '=', 'USD')->where('created_at', '>=', Carbon::now()->subDays(7)->startOfDay())->sum('usd');
+        $rub_sumN7 = MoneyModel::where('servicetype', '!=', 'В Займы (нал.)', 'AND', '!=', 'В Займы (кар.)')
+        ->where('type', '=', 'RUB')->where('created_at', '>=', Carbon::now()->subDays(7)->startOfDay())->sum('rub');
+        $uzs_sumN7 = MoneyModel::where('servicetype', '!=', 'В Займы (нал.)', 'AND', '!=', 'В Займы (кар.)')
+        ->where('type', '=', 'UZS')->where('created_at', '>=', Carbon::now()->subDays(7)->startOfDay())->sum('uzs');
+
+
         $usd_sumMP = MoneyModel::where('servicetype', '!=', 'В Займы (нал.)', 'AND', '!=', 'В Займы (кар.)')
         ->where('type', '=', 'USD')->whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->sum('usd');
         $rub_sumMP = MoneyModel::where('servicetype', '!=', 'В Займы (нал.)', 'AND', '!=', 'В Займы (кар.)')
@@ -120,6 +128,13 @@ class DashboardController extends Controller
         $uzs_sumND = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
         ->where('type', '=', 'UZS')->whereBetween('created_at', [$start_week, $end_week])->sum('uzs');
 
+        $usd_sumND7 = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
+        ->where('type', '=', 'USD')->where('created_at', '>=', Carbon::now()->subDays(7)->startOfDay())->sum('usd');
+        $rub_sumND7 = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
+        ->where('type', '=', 'RUB')->where('created_at', '>=', Carbon::now()->subDays(7)->startOfDay())->sum('rub');
+        $uzs_sumND7 = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
+        ->where('type', '=', 'UZS')->where('created_at', '>=', Carbon::now()->subDays(7)->startOfDay())->sum('uzs');
+
         $usd_sumMD = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
         ->where('type', '=', 'USD')->whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->sum('usd');
         $rub_sumMD = MoneyModel::where('servicetype', '=', 'В Займы (нал.)', 'AND', '=', 'В Займы (кар.)')
@@ -149,6 +164,10 @@ class DashboardController extends Controller
                                     'rub_sumNP'=> $rub_sumNP,
                                     'uzs_sumNP'=> $uzs_sumNP,
 
+                                    'usd_sumN7'=> $usd_sumN7,
+                                    'rub_sumN7'=> $rub_sumN7,
+                                    'uzs_sumN7'=> $uzs_sumN7,
+
                                     'usd_sumMP'=> $usd_sumMP,
                                     'rub_sumMP'=> $rub_sumMP,
                                     'uzs_sumMP'=> $uzs_sumMP,
@@ -170,6 +189,10 @@ class DashboardController extends Controller
                                     'usd_sumND'=> $usd_sumND,
                                     'rub_sumND'=> $rub_sumND,
                                     'uzs_sumND'=> $uzs_sumND,
+
+                                    'usd_sumND7'=> $usd_sumND7,
+                                    'rub_sumND7'=> $rub_sumND7,
+                                    'uzs_sumND7'=> $uzs_sumND7,
 
                                     'usd_sumMD'=> $usd_sumMD,
                                     'rub_sumMD'=> $rub_sumMD,
