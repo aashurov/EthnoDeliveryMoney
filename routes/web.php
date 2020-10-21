@@ -25,6 +25,10 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 Route::middleware(['auth:sanctum', 'verified'])->get('/listsorting', [DashboardController::class, 'listsorting'])->name('listsorting');
+Route::middleware(['auth:sanctum', 'verified'])->get('/listsortingf', [DashboardController::class, 'listsortingf'])->name('listsortingf');
+
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/listmoney', [MoneyController::class, 'listmoney'])->name('listmoney');
 Route::middleware(['auth:sanctum', 'verified'])->get('/addmoney', [MoneyController::class, 'addmoney'])->name('addmoney');
