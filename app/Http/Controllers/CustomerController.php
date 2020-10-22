@@ -68,7 +68,7 @@ class CustomerController extends Controller
         }
         else
         {
-            $customers->imagepassportt = 'imagepassportt';
+            $customers->imagepassportt = 'imagepassportt.png';
         }
         
        
