@@ -23,15 +23,18 @@
                         <form method="POST" action={{route('updatemoney', $moneys->id)}}>
                             @csrf
                             <div class="form-row">
-                              <div class="form-group col-md-4">
+                              <div class="form-group col-md-3">
                                 <input type="text" class="form-control" name="customer_id"  value="{{$moneys->customer_id}}">
                               </div>
-                              <div class="form-group col-md-4">
+                              <div class="form-group col-md-3">
                                 <input type="text" class="form-control" name="customername"  value="{{$moneys->customer_name}}">
                               </div>
-                              <div class="form-group col-md-4">
+                              <div class="form-group col-md-3">
                                   <input type="text" class="form-control" name="couriername"  value="{{$moneys->courier_id}}">
                               </div>
+                              <div class="form-group col-md-3">
+                                <input type="text" class="form-control" name="zakg"  value="{{$moneys->zakg}}">
+                            </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">

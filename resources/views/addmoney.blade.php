@@ -23,25 +23,29 @@
                         <form method="POST" action={{route('savemoney')}}>
                             @csrf
                             <div class="form-row">
-                              <div class="form-group col-md-6">
+                              <div class="form-group col-md-4">
                                 <select id="editable-select" name="customername" class="form-control" placeholder="Имя клиента">
                                   @foreach ($customers as $customer)
                                   <option value="{{$customer->flname}}">{{$customer->c_id}} {{$customer->flname}} {{$customer->phone_number}}</option>
                                   @endforeach
                                 </select>
                               </div>
-                              <div class="form-group col-md-6">
+                              <div class="form-group col-md-4">
                                 <select   id="editable-select1" name="couriername" class="form-control" placeholder="Имя курера">
                                   @foreach ($couriers as $courier)
                                   <option value="{{$courier->flname}}">{{$courier->flname}}</option>
                                   @endforeach
                                 </select>
                               </div>
+                              <div class="form-group col-md-4">
+                                <input type="text" class="form-control" name="zakg" placeholder="Введите сумму за кг">
+                              </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                   <input type="text" class="form-control" name="amount" placeholder="Введите сумму вклада">
                                 </div>
+                                
                                 <div class="form-group col-md-3">
                                     <select name="type" class="form-control">
                                       <option selected>Тип валюты...</option>

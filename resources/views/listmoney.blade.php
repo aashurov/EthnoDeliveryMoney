@@ -54,6 +54,7 @@ overflow: hidden;
                               <th style="text-align:center" scope="col">USD</th>
                               <th style="text-align:center" scope="col">RUB</th>
                               <th style="text-align:center" scope="col">UZS</th>
+                              <th style="text-align:center" scope="col">Za kg</th>
                               <th style="text-align:center" scope="col">Тип</th>
                               {{--style="text-align:center"  <th scope="col">Филиал</th> --}}
                               <th style="text-align:center" scope="col">Тип сервиса</th>
@@ -76,6 +77,7 @@ overflow: hidden;
                                 <td style="text-align:center">{{ $money->usd }}</td>
                                 <td style="text-align:center">{{ $money->rub }}</td>
                                 <td style="text-align:center">{{ $money->uzs }}</td>
+                                <td style="text-align:center">{{ $money->zakg }}</td>
                                 <td style="text-align:center">{{ $money->type }}</td>
                                 {{-- <td style="text-align:center">{{ $money->branch}}</td> --}}
                                 <td style="text-align:center">{{ $money->servicetype }}</td>

@@ -49,7 +49,14 @@ public function listmoneys()
 
         $money->customer_id = $result[0];
         $money->customer_name = $result[1];
-
+        if ($request->zakg == '')
+        {
+            $money->zakg = '00';
+        }
+        else {
+            $money->zakg = $request->zakg;
+        }
+        
         if ($request->couriername == '')
         {
             $money->courier_id = 'В офисе';
@@ -156,6 +163,13 @@ public function listmoneys()
         // dd($money);
         $money->customer_id = $request->customer_id;
         $money->customer_name = $request->customername;
+        if ($request->zakg == '')
+        {
+            $money->zakg = '00';
+        }
+        else {
+            $money->zakg = $request->zakg;
+        }
 
          if ($request->couriername == '')
         {
