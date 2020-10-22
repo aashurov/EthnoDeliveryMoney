@@ -7,6 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\LoanController;
+use App\Http\Controllers\ExchangeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +38,23 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/savemoney', [MoneyContro
 Route::middleware(['auth:sanctum', 'verified'])->get('/editmoney/{id}', [MoneyController::class, 'editmoney'])->name('editmoney');
 Route::middleware(['auth:sanctum', 'verified'])->post('/updatemoney/{id}', [MoneyController::class, 'updatemoney'])->name('updatemoney');
 Route::middleware(['auth:sanctum', 'verified'])->post('/deletemoney/{id}', [MoneyController::class, 'deletemoney'])->name('deletemoney');
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/listmoneys', [MoneyController::class, 'listmoneys'])->name('listmoneys');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/listloan', [LoanController::class, 'listloan'])->name('listloan');
+Route::middleware(['auth:sanctum', 'verified'])->get('/addloan', [LoanController::class, 'addloan'])->name('addloan');
+Route::middleware(['auth:sanctum', 'verified'])->post('/saveloan', [LoanController::class, 'saveloan'])->name('saveloan');
+Route::middleware(['auth:sanctum', 'verified'])->get('/editloan/{id}', [LoanController::class, 'editloan'])->name('editloan');
+Route::middleware(['auth:sanctum', 'verified'])->post('/updateloan/{id}', [LoanController::class, 'updateloan'])->name('updateloan');
+Route::middleware(['auth:sanctum', 'verified'])->post('/deleteloan/{id}', [LoanController::class, 'deleteloan'])->name('deleteloan');
+Route::middleware(['auth:sanctum', 'verified'])->get('/closeloan/{id}', [LoanController::class, 'closeloan'])->name('closeloan');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/listexchange', [ExchangeController::class, 'listexchange'])->name('listexchange');
+Route::middleware(['auth:sanctum', 'verified'])->get('/addexchange', [ExchangeController::class, 'addexchange'])->name('addexchange');
+Route::middleware(['auth:sanctum', 'verified'])->post('/saveexchange', [ExchangeController::class, 'saveexchange'])->name('saveexchange');
+Route::middleware(['auth:sanctum', 'verified'])->get('/editexchange/{id}', [ExchangeController::class, 'editexchange'])->name('editexchange');
+Route::middleware(['auth:sanctum', 'verified'])->post('/updateexchange/{id}', [ExchangeController::class, 'updateexchange'])->name('updateexchange');
+Route::middleware(['auth:sanctum', 'verified'])->post('/deleteexchange/{id}', [ExchangeController::class, 'deleteexchange'])->name('deleteexchange');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/listcustomer', [CustomerController::class, 'listcustomer'])->name('listcustomer');

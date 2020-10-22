@@ -17,7 +17,7 @@
                         {{-- <x-jet-application-logo class="block h-12 w-auto" /> --}}
                     </div>
                     <div class="mt-8 text-2xl">
-                      Пожалуйста запольните все поля
+                      Пожалуйста заполните все поля
                     </div>
                     <div class="mt-6 text-gray-500">
                         <form method="POST" action={{route('updatemoney', $moneys->id)}}>
@@ -70,130 +70,91 @@
                                     <select name="servicetype" class="form-control">
                                       @if ($moneys->servicetype == "Предоплата (нал.)")
                                         <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
-                                      {{-- <option value="Предоплата (нал.)">Предоплата (нал.)</option> --}}
                                         <option value="Предоплата (кар.)">Предоплата (кар.)</option>
-                                        <option value="За перевозку (нал.)">За перевозку (нал.)</option>
-                                        <option value="За перевозку (карт.)">За перевозку (карт.)</option>
                                         <option value="За товар (нал.)">За товар (нал.)</option>
                                         <option value="За товар (кар.)">За товар (кар.)</option>
-                                        <option value="В Займы (нал.)">В Займы (нал.)</option>
-                                        <option value="В Займы (кар.)">В Займы (кар.)</option>
-                                        <option value="Обмен">Обмен</option>
+                                        <option value="За перевозку Таш-Мос кг (нал.)">За перевозку Таш-Мос кг (нал.)</option>
+                                        <option value="За перевозку Таш-Мос кг (кар.)">За перевозку Таш-Мос кг (кар.)</option>
+                                        <option value="За перевозку Мос-Таш кг (нал.)">За перевозку Мос-Таш кг (нал.)</option>
+                                        <option value="За перевозку Мос-Таш кг (кар.)">За перевозку Мос-Таш кг (кар.)</option>
                                       @endif
 
                                       @if ($moneys->servicetype == "Предоплата (кар.)")
                                       <option value="Предоплата (нал.)">Предоплата (нал.)</option>
                                       <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
-
-                                      {{-- <option value="Предоплата (кар.)">Предоплата (кар.)</option> --}}
-                                      <option value="За перевозку (нал.)">За перевозку (нал.)</option>
-                                      <option value="За перевозку (карт.)">За перевозку (карт.)</option>
                                       <option value="За товар (нал.)">За товар (нал.)</option>
                                       <option value="За товар (кар.)">За товар (кар.)</option>
-                                      <option value="В Займы (нал.)">В Займы (нал.)</option>
-                                      <option value="В Займы (кар.)">В Займы (кар.)</option>
-                                      <option value="Обмен">Обмен</option>
-                                      @endif
-
-                                      @if ($moneys->servicetype == "За перевозку (нал.)")
-                                      <option value="Предоплата (нал.)">Предоплата (нал.)</option>
-                                      <option value="Предоплата (кар.)">Предоплата (кар.)</option>
-                                      <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
-
-                                      {{-- <option value="За перевозку (нал.)">За перевозку (нал.)</option> --}}
-                                      <option value="За перевозку (карт.)">За перевозку (карт.)</option>
-                                      <option value="За товар (нал.)">За товар (нал.)</option>
-                                      <option value="За товар (кар.)">За товар (кар.)</option>
-                                      <option value="В Займы (нал.)">В Займы (нал.)</option>
-                                      <option value="В Займы (кар.)">В Займы (кар.)</option>
-                                      <option value="Обмен">Обмен</option>
-                                      @endif
-
-                                      @if ($moneys->servicetype == "За перевозку (карт.)")
-                                      <option value="Предоплата (нал.)">Предоплата (нал.)</option>
-                                      <option value="Предоплата (кар.)">Предоплата (кар.)</option>
-                                      <option value="За перевозку (нал.)">За перевозку (нал.)</option>
-                                      <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
-
-                                      {{-- <option value="За перевозку (карт.)">За перевозку (карт.)</option> --}}
-                                      <option value="За товар (нал.)">За товар (нал.)</option>
-                                      <option value="За товар (кар.)">За товар (кар.)</option>
-                                      <option value="В Займы (нал.)">В Займы (нал.)</option>
-                                      <option value="В Займы (кар.)">В Займы (кар.)</option>
-                                      <option value="Обмен">Обмен</option>
+                                      <option value="За перевозку Таш-Мос кг (нал.)">За перевозку Таш-Мос кг (нал.)</option>
+                                      <option value="За перевозку Таш-Мос кг (кар.)">За перевозку Таш-Мос кг (кар.)</option>
+                                      <option value="За перевозку Мос-Таш кг (нал.)">За перевозку Мос-Таш кг (нал.)</option>
+                                      <option value="За перевозку Мос-Таш кг (кар.)">За перевозку Мос-Таш кг (кар.)</option>
                                       @endif
 
                                       @if ($moneys->servicetype == "За товар (нал.)")
                                       <option value="Предоплата (нал.)">Предоплата (нал.)</option>
                                       <option value="Предоплата (кар.)">Предоплата (кар.)</option>
-                                      <option value="За перевозку (нал.)">За перевозку (нал.)</option>
-                                      <option value="За перевозку (карт.)">За перевозку (карт.)</option>
                                       <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
-
-                                      {{-- <option value="За товар (нал.)">За товар (нал.)</option> --}}
                                       <option value="За товар (кар.)">За товар (кар.)</option>
-                                      <option value="В Займы (нал.)">В Займы (нал.)</option>
-                                      <option value="В Займы (кар.)">В Займы (кар.)</option>
-                                      <option value="Обмен">Обмен</option>
+                                      <option value="За перевозку Таш-Мос кг (нал.)">За перевозку Таш-Мос кг (нал.)</option>
+                                      <option value="За перевозку Таш-Мос кг (кар.)">За перевозку Таш-Мос кг (кар.)</option>
+                                      <option value="За перевозку Мос-Таш кг (нал.)">За перевозку Мос-Таш кг (нал.)</option>
+                                      <option value="За перевозку Мос-Таш кг (кар.)">За перевозку Мос-Таш кг (кар.)</option>
                                       @endif
 
                                       @if ($moneys->servicetype == "За товар (кар.)")
                                       <option value="Предоплата (нал.)">Предоплата (нал.)</option>
                                       <option value="Предоплата (кар.)">Предоплата (кар.)</option>
-                                      <option value="За перевозку (нал.)">За перевозку (нал.)</option>
-                                      <option value="За перевозку (карт.)">За перевозку (карт.)</option>
                                       <option value="За товар (нал.)">За товар (нал.)</option>
                                       <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
-
-                                      {{-- <option value="За товар (кар.)">За товар (кар.)</option> --}}
-                                      <option value="В Займы (нал.)">В Займы (нал.)</option>
-                                      <option value="В Займы (кар.)">В Займы (кар.)</option>
-                                      <option value="Обмен">Обмен</option>
+                                      <option value="За перевозку Таш-Мос кг (нал.)">За перевозку Таш-Мос кг (нал.)</option>
+                                      <option value="За перевозку Таш-Мос кг (кар.)">За перевозку Таш-Мос кг (кар.)</option>
+                                      <option value="За перевозку Мос-Таш кг (нал.)">За перевозку Мос-Таш кг (нал.)</option>
+                                      <option value="За перевозку Мос-Таш кг (кар.)">За перевозку Мос-Таш кг (кар.)</option>
                                       @endif
 
-                                      @if ($moneys->servicetype == "В Займы (нал.)")
+                                      @if ($moneys->servicetype == "За перевозку Таш-Мос кг (нал.)")
                                       <option value="Предоплата (нал.)">Предоплата (нал.)</option>
                                       <option value="Предоплата (кар.)">Предоплата (кар.)</option>
-                                      <option value="За перевозку (нал.)">За перевозку (нал.)</option>
-                                      <option value="За перевозку (карт.)">За перевозку (карт.)</option>
                                       <option value="За товар (нал.)">За товар (нал.)</option>
                                       <option value="За товар (кар.)">За товар (кар.)</option>
                                       <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
-
-                                      {{-- <option value="В Займы (нал.)">В Займы (нал.)</option> --}}
-                                      <option value="В Займы (кар.)">В Займы (кар.)</option>
-                                      <option value="Обмен">Обмен</option>
+                                      <option value="За перевозку Таш-Мос кг (кар.)">За перевозку Таш-Мос кг (кар.)</option>
+                                      <option value="За перевозку Мос-Таш кг (нал.)">За перевозку Мос-Таш кг (нал.)</option>
+                                      <option value="За перевозку Мос-Таш кг (кар.)">За перевозку Мос-Таш кг (кар.)</option>
                                       @endif
 
-                                      @if ($moneys->servicetype == "В Займы (кар.)")
+                                      @if ($moneys->servicetype == "За перевозку Таш-Мос кг (кар.)")
                                       <option value="Предоплата (нал.)">Предоплата (нал.)</option>
                                       <option value="Предоплата (кар.)">Предоплата (кар.)</option>
-                                      <option value="За перевозку (нал.)">За перевозку (нал.)</option>
-                                      <option value="За перевозку (карт.)">За перевозку (карт.)</option>
                                       <option value="За товар (нал.)">За товар (нал.)</option>
                                       <option value="За товар (кар.)">За товар (кар.)</option>
-                                      <option value="В Займы (нал.)">В Займы (нал.)</option>
+                                      <option value="За перевозку Таш-Мос кг (нал.)">За перевозку Таш-Мос кг (нал.)</option>
                                       <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
-
-                                      {{-- <option value="В Займы (кар.)">В Займы (кар.)</option> --}}
-                                      <option value="Обмен">Обмен</option>
+                                      <option value="За перевозку Мос-Таш кг (нал.)">За перевозку Мос-Таш кг (нал.)</option>
+                                      <option value="За перевозку Мос-Таш кг (кар.)">За перевозку Мос-Таш кг (кар.)</option>
                                       @endif
-
-                                      @if ($moneys->servicetype == "Обмен")
-                                      <option value="Предоплата (нал.)">Предоплата (нал.)</option>
-                                      <option value="Предоплата (кар.)">Предоплата (кар.)</option>
-                                      <option value="За перевозку (нал.)">За перевозку (нал.)</option>
-                                      <option value="За перевозку (карт.)">За перевозку (карт.)</option>
-                                      <option value="За товар (нал.)">За товар (нал.)</option>
-                                      <option value="За товар (кар.)">За товар (кар.)</option>
-                                      <option value="В Займы (нал.)">В Займы (нал.)</option>
-                                      <option value="В Займы (кар.)">В Займы (кар.)</option>
-                                      <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
-
-                                      {{-- <option value="Обмен">Обмен</option> --}}
-                                      @endif
-
                                       
+                                      @if ($moneys->servicetype == "За перевозку Мос-Таш кг (нал.)")
+                                      <option value="Предоплата (нал.)">Предоплата (нал.)</option>
+                                      <option value="Предоплата (кар.)">Предоплата (кар.)</option>
+                                      <option value="За товар (нал.)">За товар (нал.)</option>
+                                      <option value="За товар (кар.)">За товар (кар.)</option>
+                                      <option value="За перевозку Таш-Мос кг (нал.)">За перевозку Таш-Мос кг (нал.)</option>
+                                      <option value="За перевозку Таш-Мос кг (кар.)">За перевозку Таш-Мос кг (кар.)</option>
+                                      <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
+                                      <option value="За перевозку Мос-Таш кг (кар.)">За перевозку Мос-Таш кг (кар.)</option>
+                                      @endif
+
+                                      @if ($moneys->servicetype == "За перевозку Мос-Таш кг (кар.)")
+                                      <option value="Предоплата (нал.)">Предоплата (нал.)</option>
+                                      <option value="Предоплата (кар.)">Предоплата (кар.)</option>
+                                      <option value="За товар (нал.)">За товар (нал.)</option>
+                                      <option value="За товар (кар.)">За товар (кар.)</option>
+                                      <option value="За перевозку Таш-Мос кг (нал.)">За перевозку Таш-Мос кг (нал.)</option>
+                                      <option value="За перевозку Таш-Мос кг (кар.)">За перевозку Таш-Мос кг (кар.)</option>
+                                      <option value="За перевозку Мос-Таш кг (нал.)">За перевозку Мос-Таш кг (нал.)</option>
+                                      <option  value="{{$moneys->servicetype}}" selected>{{$moneys->servicetype}}</option>
+                                      @endif
                                       
                                   </select>
 

@@ -17,7 +17,7 @@
                         {{-- <x-jet-application-logo class="block h-12 w-auto" /> --}}
                     </div>
                     <div class="mt-8 text-2xl">
-                      Пожалуйста запольните все поля
+                      Пожалуйста заполните все поля
                     </div>
                     <div class="mt-6 text-gray-500">
                         <form method="POST" action={{route('updatetransaction', $transactions->id)}}>
@@ -66,35 +66,43 @@
                                   <div class="form-group col-md-4">
                                     <select name="transactiontype" class="form-control">
                                       @if ($transactions->transactiontype == "Отправка денег в Москву")
-                                        <option  value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
+                                        <option value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
                                         <option value="Отправка денег в Ташкент">Отправка денег в Ташкент</option>
                                         <option value="За Обед">За Обед</option>
                                         <option value="Зарплата">Зарплата</option>
                                         <option value="Мелкие расходы">Мелкие расходы</option>
+                                        <option value="ЧП">ЧП</option>
+
                                       @endif
 
                                       @if ($transactions->transactiontype == "Отправка денег в Ташкент")
                                       <option value="Отправка денег в Москву">Отправка денег в Москву</option>
-                                      <option  value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
+                                      <option value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
                                       <option value="За Обед">За Обед</option>
                                       <option value="Зарплата">Зарплата</option>
                                       <option value="Мелкие расходы">Мелкие расходы</option>
+                                      <option value="ЧП">ЧП</option>
+
                                       @endif
 
                                       @if ($transactions->transactiontype == "За Обед")
                                       <option value="Отправка денег в Москву">Отправка денег в Москву</option>
                                       <option value="Отправка денег в Ташкент">Отправка денег в Ташкент</option>
-                                      <option  value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
+                                      <option value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
                                       <option value="Зарплата">Зарплата</option>
                                       <option value="Мелкие расходы">Мелкие расходы</option>
+                                      <option value="ЧП">ЧП</option>
+
                                       @endif
 
                                       @if ($transactions->transactiontype == "Зарплата")
                                       <option value="Отправка денег в Москву">Отправка денег в Москву</option>
                                       <option value="Отправка денег в Ташкент">Отправка денег в Ташкент</option>
                                       <option value="За Обед">За Обед</option>
-                                      <option  value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
+                                      <option value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
                                       <option value="Мелкие расходы">Мелкие расходы</option>
+                                      <option value="ЧП">ЧП</option>
+
                                       @endif
 
                                       @if ($transactions->transactiontype == "Мелкие расходы")
@@ -103,8 +111,18 @@
                                       <option value="За Обед">За Обед</option>
                                       <option value="Зарплата">Зарплата</option>
                                       <option  value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
+                                      <option value="ЧП">ЧП</option>
+                                     
                                       @endif
 
+                                      @if ($transactions->transactiontype == "ЧП")
+                                      <option value="Отправка денег в Москву">Отправка денег в Москву</option>
+                                      <option value="Отправка денег в Ташкент">Отправка денег в Ташкент</option>
+                                      <option value="За Обед">За Обед</option>
+                                      <option value="Зарплата">Зарплата</option>
+                                      <option value="Мелкие расходы">Мелкие расходы</option>
+                                      <option  value="{{$transactions->transactiontype}}" selected>{{$transactions->transactiontype}}</option>
+                                      @endif
                                       
                                   </select>
 

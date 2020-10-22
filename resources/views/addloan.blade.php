@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Добавить приход') }}
+            {{ __('Добавить долг') }}
         </h2>
     </x-slot>
 
@@ -20,7 +20,7 @@
                         Пожалуйста заполните все поля
                     </div>
                     <div class="mt-6 text-gray-500">
-                        <form method="POST" action={{route('savemoney')}}>
+                        <form method="POST" action={{route('saveloan')}}>
                             @csrf
                             <div class="form-row">
                               <div class="form-group col-md-6">
@@ -39,10 +39,10 @@
                               </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-3">
-                                  <input type="text" class="form-control" name="amount" placeholder="Введите сумму вклада">
+                                <div class="form-group col-md-4">
+                                  <input type="text" class="form-control" name="amount" placeholder="Введите сумму долга">
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-4">
                                     <select name="type" class="form-control">
                                       <option selected>Тип валюты...</option>
                                       @foreach ($types as $type)
@@ -50,22 +50,11 @@
                                   @endforeach
                                     </select>
                                   </div>
-                                  <div class="form-group col-md-3">
-                                    <select name="servicetype" class="form-control">
-                                      <option selected>Тип сервиса...</option>
-                                      @foreach ($servicetypes as $servicetype)
-                                  <option value="{{$servicetype->service_name}}">{{$servicetype->service_name}}</option>
-                                  @endforeach
-                                    </select>
-                                  </div>
-                                  <div class="form-group col-md-3">
+                                  <div class="form-group col-md-4">
                                     <select name="status" class="form-control">
                                       <option selected>Статус...</option>
-                                      {{-- @foreach ($servicetypes as $servicetype) --}}
-                                  {{-- <option value="{{$servicetype->service_name}}">{{$servicetype->service_name}}</option> --}}
-                                  <option value="Принят">Принят</option>
-                                  <option value="Не Принят">Не Принят</option>
-                                  {{-- @endforeach --}}
+                                      <option value="Взял">Взял</option>
+                                      <option value="Отдал">Отдал</option>
                                     </select>
                                   </div>
                               </div>

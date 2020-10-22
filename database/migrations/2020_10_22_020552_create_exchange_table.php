@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMoneyTable extends Migration
+class CreateExchangeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMoneyTable extends Migration
      */
     public function up()
     {
-        Schema::create('money', function (Blueprint $table) {
+        Schema::create('exchange', function (Blueprint $table) {
             $table->id();
             $table->string('customer_id');
             $table->string('customer_name');
@@ -23,10 +23,7 @@ class CreateMoneyTable extends Migration
             $table->string('uzs');
             $table->string('type');// pul qaysi valyutada berildi
             $table->string('branch');
-            $table->string('servicetype'); // pul nimaga olindi yani qarzmi predoplatami perevozkagami
             $table->string('dategive'); // pul qachon olindi klientdan 
-            $table->string('status'); // pul olindi(kurerni qulida) yoki kassaga kelib tushdi (kurer kassaga topshirdi)
-            $table->string('datereceive'); // pul qachon qabul qilindi
             $table->string('description');
             $table->timestamps();
         });
@@ -39,6 +36,6 @@ class CreateMoneyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('money');
+        Schema::dropIfExists('exchange');
     }
 }

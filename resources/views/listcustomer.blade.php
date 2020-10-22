@@ -119,7 +119,7 @@ $(document).ready(function() {
     } );
  
     var table = $('#example').DataTable( {
-      
+        pageLength: 50,
         orderCellsTop: true,
         fixedHeader: true,
         language: {

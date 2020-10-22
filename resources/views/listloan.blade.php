@@ -1,10 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Список расходов') }}
+            {{ __('Список долгов') }}
         </h2>
     </x-slot>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://dn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
@@ -17,6 +16,7 @@
       thead input {
         width: 100%;
     }
+
     table td {
 max-width: 120px;
 white-space: nowrap;
@@ -25,7 +25,8 @@ word-break: break-all;
 overflow: hidden;
 }
     </style>
-      <div class="py-10">
+    
+    <div class="py-10">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200" >
@@ -36,60 +37,85 @@ overflow: hidden;
                       <div class="panel-heading">
                         <div class="row">
                           <div class="col col-xs-6">
-                            <h3 class="panel-title">Список расходов</h3>
+                            <h3 class="panel-title">Список долгов</h3>
                           </div>
                           <div class="col col-xs-6 text-right">
-                            <a class="btn btn-sm btn-primary btn-create"  href="{{ route('addtransaction') }}">Добавить</a>
+                            <a class="btn btn-sm btn-primary btn-create"  href="{{ route('addloan') }}">Добавить</a>
                           </div>
                         </div>
                       </div>
-                      <table id="example" class="display compact" style="width:100%">
+                      <table id="example" class="display compact cell-border" style="width:100%">
                         <thead>
                             <tr>
-                              <th scope="col" width="5px">№</th>
-                              <th scope="col" style="text-align:center">Курер</th>
-                              <th scope="col" style="text-align:center">USD</th>
-                              <th scope="col" style="text-align:center">RUB</th>
-                              <th scope="col" style="text-align:center">UZS</th>
-                              <th scope="col" style="text-align:center">Тип</th>
-                              <th scope="col" style="text-align:center">Тип расхода</th>
-                              <th scope="col" style="text-align:center">Дата расхода</th>
-                              <th scope="col" style="text-align:center">Описание</th>
-                              <th scope="col" style="text-align:center">Действие</th>
+                              <th style="text-align:center" scope="col">№</th>
+                              <th style="text-align:center" scope="col">ID Клиента</th>
+                              <th style="text-align:center" scope="col">Имя Клиент</th>
+                              <th style="text-align:center" scope="col">Курер</th>
+                              <th style="text-align:center" scope="col">USD</th>
+                              <th style="text-align:center" scope="col">RUB</th>
+                              <th style="text-align:center" scope="col">UZS</th>
+                              <th style="text-align:center" scope="col">Тип</th>
+                              {{--style="text-align:center"  <th scope="col">Филиал</th> --}}
+                              {{-- <th style="text-align:center" scope="col">Тип сервиса</th> --}}
+                              <th style="text-align:center" scope="col">Дата взятие</th>
+                              <th style="text-align:center" scope="col">Дата погащение</th>
+                              <th style="text-align:center" scope="col">Статус</th>
+
+                              <th style="text-align:center" scope="col">//</th>
                             </tr>
                         </thead>
                         <tbody>
                           @php
                           $i = 0;
                       @endphp
-                      @foreach ($transactions as $transaction)
+                      @foreach ($loans as $loan)
                             <tr>
-                              <td>{{ ++$i }}</td>
-                              <td style="text-align:center">{{ $transaction->courier_id }}</td>
-                              <td style="text-align:center">{{ $transaction->usd }}</td>
-                              <td style="text-align:center">{{ $transaction->rub }}</td>
-                              <td style="text-align:center">{{ $transaction->uzs }}</td>
-                              <td style="text-align:center">{{ $transaction->type }}</td>
-                              <td style="text-align:center">{{ $transaction->transactiontype }}</td>
-                              <td style="text-align:center">{{ $transaction->datecreate }}</td>
-                              <td style="text-align:center">{{ $transaction->description }}</td>
-                              {{-- <td>{{ $transaction->description }}</td> --}}
-                              <td style="text-align:center">
-                                <form action="{{route('deletetransaction', $transaction->id)}}" method="POST", enctype="multipart/form-data">
-                                  @csrf
-                                  @method('POST')
-                                  <a class=" " href="{{ route('edittransaction',$transaction->id) }}"><i class="fa fa-pencil"></i></a>
-                                  <button class=" " type="submit">
-                                    <i class="fa fa-trash"></i></button>
-                                </form>
-                                </td>
+                              <td width="1px" >{{ ++$i }}</td>
+                                <td style="text-align:center">{{ $loan->customer_id}}</td>
+                                <td style="text-align:center">{{ $loan->customer_name}}</td>
+                                <td style="text-align:center">{{ $loan->courier_id }}</td>
+                                <td style="text-align:center">{{ $loan->usd }}</td>
+                                <td style="text-align:center">{{ $loan->rub }}</td>
+                                <td style="text-align:center">{{ $loan->uzs }}</td>
+                                <td style="text-align:center">{{ $loan->type }}</td>
+                                {{-- <td style="text-align:center">{{ $loan->branch}}</td> --}}
+                                {{-- <td style="text-align:center">{{ $loan->servicetype }}</td> --}}
+                                <td style="text-align:center">{{ $loan->dategive }}</td>
+                                <td style="text-align:center">{{ $loan->dateclose }}</td>
+                                @if ($loan->status == 'Взял')
+                                <td style="text-align:center"><span class="badge badge-danger">
+                                  {{ $loan->status }}</span></td>
+                                @endif 
+                                @if ($loan->status == 'Отдал')
+                                <td style="text-align:center"><span class="badge badge-success">
+                                  {{ $loan->status }}</span></td>
+                                @endif                                
+                                <td style="text-align:center" width="5px">
+                                  <form action="{{route('deleteloan', $loan->id)}}" method="POST", enctype="multipart/form-data">
+                                    @csrf
+                                    @method('POST')
+                                    <a class="" href="{{ route('editloan',$loan->id) }}"><i class="fa fa-pencil"></i></a>
+
+                                    @if ($loan->status == 'Взял')
+                                    <a class="" href="{{ route('closeloan',$loan->id) }}"><i class="fa fa-check"></i></a>
+                                    @endif
+                                    @if ($loan->status == 'Отдал')
+                                    <a class="" href="{{ route('closeloan',$loan->id) }}"><i class="fa fa-question"></i></a>
+                                    @endif
+                                    {{-- <i class="far fa-check-double"></i> --}}
+
+                                    <button class="" type="submit">
+                                      <i class="fa fa-trash"></i></button>
+                                  </form>
+                                  </td>
                             </tr>
                             @endforeach
-                          
                         </tbody>
                      
                     </table>
+
                     </div>
+                    
                 </div>
                 </div>
             </div>
@@ -110,8 +136,7 @@ overflow: hidden;
 
 <script> 
 $(document).ready(function() {
-      
-      
+  
     // Setup - add a text input to each footer cell
     $('#example thead tr').clone(true).appendTo( '#example thead' );
     $('#example thead tr:eq(1) th').each( function (i) {
@@ -129,9 +154,7 @@ $(document).ready(function() {
     } );
  
     var table = $('#example').DataTable( {
-  
-     pageLength: 50,
-      
+        pageLength: 50,
         orderCellsTop: true,
         fixedHeader: true,
         language: {

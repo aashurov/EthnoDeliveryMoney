@@ -1,10 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Список расходов') }}
+            {{ __('Список обменов') }}
         </h2>
     </x-slot>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://dn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
@@ -17,6 +16,7 @@
       thead input {
         width: 100%;
     }
+
     table td {
 max-width: 120px;
 white-space: nowrap;
@@ -25,7 +25,8 @@ word-break: break-all;
 overflow: hidden;
 }
     </style>
-      <div class="py-10">
+    
+    <div class="py-10">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200" >
@@ -36,60 +37,68 @@ overflow: hidden;
                       <div class="panel-heading">
                         <div class="row">
                           <div class="col col-xs-6">
-                            <h3 class="panel-title">Список расходов</h3>
+                            <h3 class="panel-title">Список обменов</h3>
                           </div>
                           <div class="col col-xs-6 text-right">
-                            <a class="btn btn-sm btn-primary btn-create"  href="{{ route('addtransaction') }}">Добавить</a>
+                            <a class="btn btn-sm btn-primary btn-create"  href="{{ route('addexchange') }}">Добавить</a>
                           </div>
                         </div>
                       </div>
-                      <table id="example" class="display compact" style="width:100%">
+                      <table id="example" class="display compact cell-border" style="width:100%">
                         <thead>
                             <tr>
-                              <th scope="col" width="5px">№</th>
-                              <th scope="col" style="text-align:center">Курер</th>
-                              <th scope="col" style="text-align:center">USD</th>
-                              <th scope="col" style="text-align:center">RUB</th>
-                              <th scope="col" style="text-align:center">UZS</th>
-                              <th scope="col" style="text-align:center">Тип</th>
-                              <th scope="col" style="text-align:center">Тип расхода</th>
-                              <th scope="col" style="text-align:center">Дата расхода</th>
-                              <th scope="col" style="text-align:center">Описание</th>
-                              <th scope="col" style="text-align:center">Действие</th>
+                              <th style="text-align:center" scope="col">№</th>
+                              <th style="text-align:center" scope="col">ID Клиента</th>
+                              <th style="text-align:center" scope="col">Имя Клиент</th>
+                              <th style="text-align:center" scope="col">Курер</th>
+                              <th style="text-align:center" scope="col">USD</th>
+                              <th style="text-align:center" scope="col">RUB</th>
+                              <th style="text-align:center" scope="col">UZS</th>
+                              <th style="text-align:center" scope="col">Тип</th>
+                              {{--style="text-align:center"  <th scope="col">Филиал</th> --}}
+                              {{-- <th style="text-align:center" scope="col">Тип сервиса</th> --}}
+                              <th style="text-align:center" scope="col">Дата обмена</th>
+                              {{-- <th style="text-align:center" scope="col">Статус</th> --}}
+                              {{-- <th style="text-align:center" scope="col">Дата принятие</th> --}}
+                              <th style="text-align:center" scope="col">//</th>
                             </tr>
                         </thead>
                         <tbody>
                           @php
                           $i = 0;
                       @endphp
-                      @foreach ($transactions as $transaction)
+                      @foreach ($exchanges as $exchange)
                             <tr>
-                              <td>{{ ++$i }}</td>
-                              <td style="text-align:center">{{ $transaction->courier_id }}</td>
-                              <td style="text-align:center">{{ $transaction->usd }}</td>
-                              <td style="text-align:center">{{ $transaction->rub }}</td>
-                              <td style="text-align:center">{{ $transaction->uzs }}</td>
-                              <td style="text-align:center">{{ $transaction->type }}</td>
-                              <td style="text-align:center">{{ $transaction->transactiontype }}</td>
-                              <td style="text-align:center">{{ $transaction->datecreate }}</td>
-                              <td style="text-align:center">{{ $transaction->description }}</td>
-                              {{-- <td>{{ $transaction->description }}</td> --}}
-                              <td style="text-align:center">
-                                <form action="{{route('deletetransaction', $transaction->id)}}" method="POST", enctype="multipart/form-data">
-                                  @csrf
-                                  @method('POST')
-                                  <a class=" " href="{{ route('edittransaction',$transaction->id) }}"><i class="fa fa-pencil"></i></a>
-                                  <button class=" " type="submit">
-                                    <i class="fa fa-trash"></i></button>
-                                </form>
-                                </td>
+                              <td width="1px" >{{ ++$i }}</td>
+                                <td style="text-align:center">{{ $exchange->customer_id}}</td>
+                                <td style="text-align:center">{{ $exchange->customer_name}}</td>
+                                <td style="text-align:center">{{ $exchange->courier_id }}</td>
+                                <td style="text-align:center">{{ $exchange->usd }}</td>
+                                <td style="text-align:center">{{ $exchange->rub }}</td>
+                                <td style="text-align:center">{{ $exchange->uzs }}</td>
+                                <td style="text-align:center">{{ $exchange->type }}</td>
+                                {{-- <td style="text-align:center">{{ $money->branch}}</td> --}}
+                                {{-- <td style="text-align:center">{{ $exchange->servicetype }}</td> --}}
+                                <td style="text-align:center">{{ $exchange->dategive }}</td>
+                                {{-- <td style="text-align:center">{{ $exchange->status }}</td> --}}
+                                {{-- <td style="text-align:center">{{ $exchange->datereceive }}</td> --}}
+                                <td style="text-align:center" width="5px">
+                                  <form action="{{route('deleteexchange', $exchange->id)}}" method="POST", enctype="multipart/form-data">
+                                    @csrf
+                                    @method('POST')
+                                    <a class="" href="{{ route('editexchange',$exchange->id) }}"><i class="fa fa-pencil"></i></a>
+                                    <button class="" type="submit">
+                                      <i class="fa fa-trash"></i></button>
+                                  </form>
+                                  </td>
                             </tr>
                             @endforeach
-                          
                         </tbody>
                      
                     </table>
+
                     </div>
+                    
                 </div>
                 </div>
             </div>
@@ -110,8 +119,7 @@ overflow: hidden;
 
 <script> 
 $(document).ready(function() {
-      
-      
+  
     // Setup - add a text input to each footer cell
     $('#example thead tr').clone(true).appendTo( '#example thead' );
     $('#example thead tr:eq(1) th').each( function (i) {
@@ -129,9 +137,7 @@ $(document).ready(function() {
     } );
  
     var table = $('#example').DataTable( {
-  
-     pageLength: 50,
-      
+        pageLength: 50,
         orderCellsTop: true,
         fixedHeader: true,
         language: {
