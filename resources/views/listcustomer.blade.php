@@ -44,13 +44,15 @@
                           </div>
                         </div>
                       </div>
-                      <table id="example" class="display compact" style="width:100%">
+                      <table id="example" class="display compact table-image" style="width:100%">
                         <thead>
                             <tr>
                               <th scope="col" style="text-align:center width:5%" >№</th>
+                              <th scope="col" style="text-align:center width:20%">Фото</th>
                               <th scope="col" style="text-align:center width:5%">ID Клиента</th>
-                              <th scope="col" style="text-align:left width:50%">Имя Клиента</th>
+                              <th scope="col" style="text-align:left width:30%">Имя Клиента</th>
                               <th scope="col" style="text-align:center width:5%">Контакты</th>
+                              <th scope="col" style="text-align:center width:30%">Адресс</th>
                               <th scope="col" style="text-align:center width:5%">Действия</th>
                             </tr>
                         </thead>
@@ -61,15 +63,34 @@
                         @foreach ($customers as $customer)
                         <tr>
                           <td style="text-align:center">{{ ++$i }}</td>
+                          <td style="text-align:center">
+                            {{-- <div class="container"> --}}
+                              <div class="row">
+                                <div class="col-sm-4">
+                                <a href="{{asset('image')}}/{{$customer->imageavatar}}" target="_blank"><img src="{{asset('image')}}/{{$customer->imageavatar}}" /></a>
+                                </div>
+                                <div class="col-sm-4">
+                                <a href="{{asset('image')}}/{{$customer->imagepassport}}" target="_blank">
+                                <img src="{{asset('image')}}/{{$customer->imagepassport}}" /></a>
+                                </div>
+                                <div class="col-sm-4">
+                                <a href="{{asset('image')}}/{{$customer->imagepassportt}}" target="_blank">
+                                <img src="{{asset('image')}}/{{$customer->imagepassportt}}" /></a>
+                                </div>
+                              </div>
+                            {{-- </div> --}}
+                          </td>
+
                           <td style="text-align:center">{{ $customer->c_id }}</td>
                           <td style="text-align:left">{{ $customer->flname }}</td>
                           <td style="text-align:center">{{ $customer->phone_number}}</td>
+                          <td style="text-align:center">{{ $customer->addressmain}}</td>
+
                           <td style="text-align:center">
                             <form action="{{route('deletecustomer', $customer->id)}}" method="POST", enctype="multipart/form-data">
                               @csrf
                               @method('POST')
                               <a class="" href="{{ route('editcustomer',$customer->id) }}"><i class="fa fa-eye"></i></a>
-
                               <a class="" href="{{ route('editcustomer',$customer->id) }}"><i class="fa fa-pencil"></i></a>
                               <button class="" type="submit">
                                 <i class="fa fa-trash"></i></button>
