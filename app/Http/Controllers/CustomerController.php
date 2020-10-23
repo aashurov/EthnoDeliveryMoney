@@ -27,13 +27,71 @@ class CustomerController extends Controller
         $customers->c_id = $request->customernumber;
         $customers->flname = $request->customername;
         $customers->phone_number = $request->phonenumber;
-        $customers->passportnumber = $request->passportnumber;
-        $customers->addressmain = $request->addressmain;
-        $customers->addresssecond = $request->addresssecond;
-        $customers->dategive = $request->dategive;
-        $customers->expirationdate = $request->expirationdate;
-        $customers->issuedby = $request->issuedby;
 
+        if($request->passportnumber == null)
+        {
+            $customers->passportnumber = '00';
+        }
+        else
+        {
+            $customers->passportnumber = $request->passportnumber;
+
+        }
+
+        if($request->addressmain == null)
+        {
+            $customers->addressmain = '00';
+
+        }
+        else
+        {
+            $customers->addressmain = $request->addressmain;
+            
+        }
+
+        if($request->addresssecond == null)
+        {
+            $customers->addresssecond = '00';
+
+        }
+        else
+        {
+        $customers->addresssecond = $request->addresssecond;
+            
+        }
+
+        if($request->dategive == null)
+        {
+            $customers->dategive = '00';
+
+        }
+        else
+        {
+        $customers->dategive = $request->dategive;
+            
+        }
+
+        if($request->expirationdate == null)
+        {
+            $customers->expirationdate = '00';
+
+        }
+        else
+        {
+        $customers->expirationdate = $request->expirationdate;
+            
+        }
+
+        if($request->issuedby == null)
+        {
+            $customers->issuedby = '00';
+
+        }
+        else
+        {
+        $customers->issuedby = $request->issuedby;
+            
+        }
 
         if($request->file('imageavatar') != null)
         {
@@ -71,7 +129,7 @@ class CustomerController extends Controller
             $customers->imagepassportt = 'imagepassportt.png';
         }
         
-       
+    //    dd($request->all());
 
         $customers->save();
         $customerss = CustomerModel::orderBy('created_at', 'desc')->get();
@@ -92,12 +150,71 @@ class CustomerController extends Controller
         $customers->c_id = $request->customernumber;
         $customers->flname = $request->customername;
         $customers->phone_number = $request->phonenumber;
-        $customers->passportnumber = $request->passportnumber;
-        $customers->addressmain = $request->addressmain;
+
+        if($request->passportnumber == null)
+        {
+            $customers->passportnumber = '00';
+        }
+        else
+        {
+            $customers->passportnumber = $request->passportnumber;
+
+        }
+
+        if($request->addressmain == null)
+        {
+            $customers->addressmain = '00';
+
+        }
+        else
+        {
+            $customers->addressmain = $request->addressmain;
+            
+        }
+
+        if($request->addresssecond == null)
+        {
+            $customers->addresssecond = '00';
+
+        }
+        else
+        {
         $customers->addresssecond = $request->addresssecond;
+            
+        }
+
+        if($request->dategive == null)
+        {
+            $customers->dategive = '00';
+
+        }
+        else
+        {
         $customers->dategive = $request->dategive;
+            
+        }
+
+        if($request->expirationdate == null)
+        {
+            $customers->expirationdate = '00';
+
+        }
+        else
+        {
         $customers->expirationdate = $request->expirationdate;
+            
+        }
+
+        if($request->issuedby == null)
+        {
+            $customers->issuedby = '00';
+
+        }
+        else
+        {
         $customers->issuedby = $request->issuedby;
+            
+        }
 
 
        
