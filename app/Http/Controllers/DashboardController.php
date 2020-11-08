@@ -54,22 +54,24 @@ class DashboardController extends Controller
 
     public function listsorting()
     {
-
+        // dd('salom');
         $previous_week = strtotime("-1 week +1 day");
         $start_week = strtotime("last sunday midnight",$previous_week);
         $end_week = strtotime("next saturday",$start_week);
         $start_week = date("Y-m-d",$start_week);
         $end_week = date("Y-m-d",$end_week);
         $yesterday = Carbon::now()->subDays(1);
-
+        $beginDate = Carbon::yesterday();
+        // dd($yesterday);
+        // dd($beginDate);
 
         $usd_sumSP = MoneyModel::where('type', '=', 'USD')->where('created_at', '>=', Carbon::today())->sum('usd');
         $rub_sumSP = MoneyModel::where('type', '=', 'RUB')->where('created_at', '>=', Carbon::today())->sum('rub');
         $uzs_sumSP = MoneyModel::where('type', '=', 'UZS')->where('created_at', '>=', Carbon::today())->sum('uzs');
 
-        $usd_sumVP = MoneyModel::where('type', '=', 'USD')->where('created_at', '<=', $yesterday)->sum('usd');
-        $rub_sumVP = MoneyModel::where('type', '=', 'RUB')->where('created_at', '<=', $yesterday)->sum('rub');
-        $uzs_sumVP = MoneyModel::where('type', '=', 'UZS')->where('created_at', '<=', $yesterday)->sum('uzs');
+        $usd_sumVP = MoneyModel::where('type', '=', 'USD')->whereDate('created_at', $yesterday)->sum('usd');
+        $rub_sumVP = MoneyModel::where('type', '=', 'RUB')->whereDate('created_at', $yesterday)->sum('rub');
+        $uzs_sumVP = MoneyModel::where('type', '=', 'UZS')->whereDate('created_at', $yesterday)->sum('uzs');
 
         $usd_sumNP = MoneyModel::where('type', '=', 'USD')->whereBetween('created_at', [$start_week, $end_week])->sum('usd');
         $rub_sumNP = MoneyModel::where('type', '=', 'RUB')->whereBetween('created_at', [$start_week, $end_week])->sum('rub');
@@ -94,9 +96,9 @@ class DashboardController extends Controller
         $rub_sumSD = LoanModel::where('type', '=', 'RUB')->where('created_at', '>=', Carbon::today())->sum('rub');
         $uzs_sumSD = LoanModel::where('type', '=', 'UZS')->where('created_at', '>=', Carbon::today())->sum('uzs');
 
-        $usd_sumVD = LoanModel::where('type', '=', 'USD')->where('created_at', '<=', $yesterday)->sum('usd');
-        $rub_sumVD = LoanModel::where('type', '=', 'RUB')->where('created_at', '<=', $yesterday)->sum('rub');
-        $uzs_sumVD = LoanModel::where('type', '=', 'UZS')->where('created_at', '<=', $yesterday)->sum('uzs');
+        $usd_sumVD = LoanModel::where('type', '=', 'USD')->whereDate('created_at', $yesterday)->sum('usd');
+        $rub_sumVD = LoanModel::where('type', '=', 'RUB')->whereDate('created_at', $yesterday)->sum('rub');
+        $uzs_sumVD = LoanModel::where('type', '=', 'UZS')->whereDate('created_at', $yesterday)->sum('uzs');
 
         $usd_sumND = LoanModel::where('type', '=', 'USD')->whereBetween('created_at', [$start_week, $end_week])->sum('usd');
         $rub_sumND = LoanModel::where('type', '=', 'RUB')->whereBetween('created_at', [$start_week, $end_week])->sum('rub');
@@ -121,9 +123,9 @@ class DashboardController extends Controller
         $rub_sumSDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'RUB')->where('created_at', '>=', Carbon::today())->sum('rub');
         $uzs_sumSDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'UZS')->where('created_at', '>=', Carbon::today())->sum('uzs');
 
-        $usd_sumVDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'USD')->where('created_at', '<=', $yesterday)->sum('usd');
-        $rub_sumVDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'RUB')->where('created_at', '<=', $yesterday)->sum('rub');
-        $uzs_sumVDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'UZS')->where('created_at', '<=', $yesterday)->sum('uzs');
+        $usd_sumVDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'USD')->whereDate('created_at', $yesterday)->sum('usd');
+        $rub_sumVDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'RUB')->whereDate('created_at', $yesterday)->sum('rub');
+        $uzs_sumVDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'UZS')->whereDate('created_at', $yesterday)->sum('uzs');
 
         $usd_sumNDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'USD')->whereBetween('created_at', [$start_week, $end_week])->sum('usd');
         $rub_sumNDnone = LoanModel::where('status', '=', 'Взял')->where('type', '=', 'RUB')->whereBetween('created_at', [$start_week, $end_week])->sum('rub');
@@ -148,9 +150,9 @@ class DashboardController extends Controller
          $rub_sumSDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'RUB')->where('created_at', '>=', Carbon::today())->sum('rub');
          $uzs_sumSDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'UZS')->where('created_at', '>=', Carbon::today())->sum('uzs');
  
-         $usd_sumVDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'USD')->where('created_at', '<=', $yesterday)->sum('usd');
-         $rub_sumVDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'RUB')->where('created_at', '<=', $yesterday)->sum('rub');
-         $uzs_sumVDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'UZS')->where('created_at', '<=', $yesterday)->sum('uzs');
+         $usd_sumVDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'USD')->whereDate('created_at', $yesterday)->sum('usd');
+         $rub_sumVDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'RUB')->whereDate('created_at', $yesterday)->sum('rub');
+         $uzs_sumVDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'UZS')->whereDate('created_at', $yesterday)->sum('uzs');
  
          $usd_sumNDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'USD')->whereBetween('created_at', [$start_week, $end_week])->sum('usd');
          $rub_sumNDyes = LoanModel::where('status', '=', 'Отдал')->where('type', '=', 'RUB')->whereBetween('created_at', [$start_week, $end_week])->sum('rub');
@@ -174,9 +176,9 @@ class DashboardController extends Controller
         $rub_sumSTR = TransactionModel::where('type', '=', 'RUB')->where('created_at', '>=', Carbon::today())->sum('rub');
         $uzs_sumSTR = TransactionModel::where('type', '=', 'UZS')->where('created_at', '>=', Carbon::today())->sum('uzs');
 
-        $usd_sumVTR = TransactionModel::where('type', '=', 'USD')->where('created_at', '<=', $yesterday)->sum('usd');
-        $rub_sumVTR = TransactionModel::where('type', '=', 'RUB')->where('created_at', '<=', $yesterday)->sum('rub');
-        $uzs_sumVTR = TransactionModel::where('type', '=', 'UZS')->where('created_at', '<=', $yesterday)->sum('uzs');
+        $usd_sumVTR = TransactionModel::where('type', '=', 'USD')->whereDate('created_at', $yesterday)->sum('usd');
+        $rub_sumVTR = TransactionModel::where('type', '=', 'RUB')->whereDate('created_at', $yesterday)->sum('rub');
+        $uzs_sumVTR = TransactionModel::where('type', '=', 'UZS')->whereDate('created_at', $yesterday)->sum('uzs');
 
         $usd_sumNTR = TransactionModel::where('type', '=', 'USD')->whereBetween('created_at', [$start_week, $end_week])->sum('usd');
         $rub_sumNTR = TransactionModel::where('type', '=', 'RUB')->whereBetween('created_at', [$start_week, $end_week])->sum('rub');
