@@ -110,6 +110,12 @@ class LoanController extends Controller
         {
             $loan->status='Взял';
             $loan->dateclose = $current->format('d-m-y');
+            
+        }
+        else if ($loan->status == 'Взял')
+        {
+            $loan->status='Отдал';
+            $loan->dateclose = $current->format('d-m-y');
             $money->customer_id = $loan->customer_id;
             $money->customer_name = $loan->customer_name;
             $money->zakg = '00';
@@ -125,11 +131,6 @@ class LoanController extends Controller
             $money->status = 'Принят';
             $money->datereceive = $current->format('d-m-y');
             $money->save();
-        }
-        else if ($loan->status == 'Взял')
-        {
-            $loan->status='Отдал';
-            $loan->dateclose = $current->format('d-m-y');
             
         }
         $loan->save();
