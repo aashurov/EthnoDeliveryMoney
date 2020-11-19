@@ -20,6 +20,7 @@ public function listmoneys()
 {
     $moneys = MoneyModel::orderBy('created_at', 'desc')->get();
 
+
 }
 
     public function listmoney(MoneyDataTables $dataTables)

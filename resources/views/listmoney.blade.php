@@ -72,7 +72,7 @@ overflow: hidden;
                             <tr>
                               <td width="1px" >{{ ++$i }}</td>
                                 <td style="text-align:center">{{ $money->customer_id}}</td>
-                                <td style="text-align:center">{{ $money->customer_name}}</td>
+                                <td style="text-align:center"><a class="" href="{{ route('editcustomer',$money->customer_id) }}">{{ $money->customer_name}}</a></td>
                                 <td style="text-align:center">{{ $money->courier_id }}</td>
                                 <td style="text-align:center">{{ $money->usd }}</td>
                                 <td style="text-align:center">{{ $money->rub }}</td>
