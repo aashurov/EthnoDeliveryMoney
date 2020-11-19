@@ -63,6 +63,8 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/savecustomer', [Customer
 Route::middleware(['auth:sanctum', 'verified'])->get('/editcustomer/{id}', [CustomerController::class, 'editcustomer'])->name('editcustomer');
 Route::middleware(['auth:sanctum', 'verified'])->post('/updatecustomer/{id}', [CustomerController::class, 'updatecustomer'])->name('updatecustomer');
 Route::middleware(['auth:sanctum', 'verified'])->post('/deletecustomer/{id}', [CustomerController::class, 'deletecustomer'])->name('deletecustomer');
+Route::middleware(['auth:sanctum', 'verified'])->get('/listmoneycustomer/{id}', [CustomerController::class, 'listmoneycustomer'])->name('listmoneycustomer');
+Route::middleware(['auth:sanctum', 'verified'])->get('/listloancustomer/{id}', [CustomerController::class, 'listloancustomer'])->name('listloancustomer');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/listcourier', [CourierController::class, 'listcourier'])->name('listcourier');

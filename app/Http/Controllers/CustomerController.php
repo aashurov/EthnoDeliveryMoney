@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CustomerModel;
 use App\Models\MoneyModel;
+use App\Models\LoanModel;
 
 
 class CustomerController extends Controller
@@ -266,6 +267,23 @@ class CustomerController extends Controller
     {
         $customer = CustomerModel::where('id',$id)->delete();
         return redirect()->route('listcustomer');
+    }
+
+    public function listmoneycustomer($id)
+    {
+        $customers = CustomerModel::find($id);
+        $moneys = MoneyModel::where('customer_id', $customers->c_id)->orderBy('created_at', 'desc')->get();
+        return view('listmoneycustomer', ['customers'=>$customers, 'moneys'=>$moneys]);
+        // return view('listmoneycustomer');
+
+    }
+    public function listloancustomer($id)
+    {
+        $customers = CustomerModel::find($id);
+        $loans = LoanModel::where('customer_id', $customers->c_id)->orderBy('created_at', 'desc')->get();
+        return view('listloancustomer', ['customers'=>$customers, 'loans'=>$loans]);
+        // return view('listmoneycustomer');
+
     }
 
 }

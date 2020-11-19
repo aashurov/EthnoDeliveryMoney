@@ -45,10 +45,12 @@ public function listmoneys()
         $current = Carbon::now();
         $money = new MoneyModel();
 
-        $result = explode(" ", $request->customername, 3);
-
+        $result = explode(" ", $request->customername);
         $money->customer_id = $result[0];
-        $money->customer_name = $result[1];
+        $fruit = array_shift($result);
+        array_pop($result);
+        $customerName = implode(" ",$result);
+        $money->customer_name = $customerName;
         if ($request->zakg == '')
         {
             $money->zakg = '00';
@@ -65,11 +67,9 @@ public function listmoneys()
         $money->courier_id = $request->couriername;
         }
         $currencyy = CurrencyModel::all()->last();
-        // dd($currencyy->rub_usd);
          $rub_usd = floatval($currencyy->rub_usd);
          $rub_uzs = floatval($currencyy->rub_uzs);
          $uzs_usd = floatval($currencyy->uzs_usd);
-        // dd($currencyy[0]->rub_usd);
         if ($request->type == 'USD')
         {
             $amount = floatval($request->amount);
@@ -107,7 +107,6 @@ public function listmoneys()
         $money->dategive = $current->format('d-m-y');
         $money->status = $request->status;
         $money->datereceive = $current->format('d-m-y');
-    //    dd($request->all());
         $money->save();
 
         if ($request->servicetype == 'Предоплата (нал.)' OR $request->servicetype == 'Предоплата (кар.)')
