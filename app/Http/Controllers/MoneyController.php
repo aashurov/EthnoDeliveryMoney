@@ -67,7 +67,7 @@ public function listmoneys()
         else {
         $money->courier_id = $request->couriername;
         }
-        $currencyy = CurrencyModel::all()->last();
+         $currencyy = CurrencyModel::all()->last();
          $rub_usd = floatval($currencyy->rub_usd);
          $rub_uzs = floatval($currencyy->rub_uzs);
          $uzs_usd = floatval($currencyy->uzs_usd);

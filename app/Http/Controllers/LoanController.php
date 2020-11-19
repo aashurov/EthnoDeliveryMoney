@@ -102,17 +102,35 @@ class LoanController extends Controller
     }
     public function closeloan($id)
     {
+        $currencyy = CurrencyModel::all()->last();
         $current = Carbon::now();
         $loan = LoanModel::find($id);
+        $money = new MoneyModel();
         if ($loan->status == 'Отдал')
         {
             $loan->status='Взял';
             $loan->dateclose = $current->format('d-m-y');
+            $money->customer_id = $loan->customer_id;
+            $money->customer_name = $loan->customer_name;
+            $money->zakg = '00';
+            $money->courier_id = $loan->courier_id;
+            $money->usd = $loan->usd;
+            $money->rub = $loan->rub;
+            $money->uzs = $loan->uzs;
+            $money->type = $loan->type;
+            $money->branch = 'UZ';
+            $money->servicetype = 'За долги';
+            $money->description = "Оплата ЗА ДОЛГ///// Текуший курсы: " . " Рубль к доллару: ".$currencyy->rub_usd. " Рубль к суму: ".$currencyy->rub_uzs. " Сум к доллару: ".$currencyy->uzs_usd;
+            $money->dategive = $current->format('d-m-y');
+            $money->status = 'Принят';
+            $money->datereceive = $current->format('d-m-y');
+            $money->save();
         }
         else if ($loan->status == 'Взял')
         {
             $loan->status='Отдал';
             $loan->dateclose = $current->format('d-m-y');
+            
         }
         $loan->save();
         return redirect()->route('listloan');
