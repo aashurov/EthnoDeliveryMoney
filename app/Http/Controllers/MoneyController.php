@@ -45,9 +45,9 @@ public function listmoneys()
     {
         $current = Carbon::now();
         $money = new MoneyModel();
-
         $result = explode(" ", $request->customername);
         $money->customer_id = $result[0];
+        $contact = end($result);
         $fruit = array_shift($result);
         array_pop($result);
         $customerName = implode(" ",$result);
@@ -125,6 +125,7 @@ public function listmoneys()
         $message = <<<TEXT
         ----------------Предоплата---------------
         Клиент: $money->customer_id $money->customer_name
+        Контакты: $contact
         Курер: $money->courier_id
         В Долларах: $money->usd
         В Рублях: $money->rub
