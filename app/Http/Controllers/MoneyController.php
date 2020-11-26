@@ -104,7 +104,11 @@ public function listmoneys()
         $money->branch = 'RU';
         }
         $money->servicetype = $request->servicetype;
-        $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy->rub_usd. " Рубль к суму: ".$currencyy->rub_uzs. " Сум к доллару: ".$currencyy->uzs_usd;
+        // $money->description = $request->description . " Текуший курсы: " . " Рубль к доллару: ".$currencyy->rub_usd. " Рубль к суму: ".$currencyy->rub_uzs. " Сум к доллару: ".$currencyy->uzs_usd;
+        $money->description = $request->description;
+        $curs = $currencyy->rub_usd." || ".$currencyy->uzs_usd;
+        // $curs = $currencyy->rub_usd."||".$currencyy->rub_uzs."||".$currencyy->uzs_usd;
+
         $money->dategive = $current->format('d-m-y');
         $money->status = $request->status;
         $money->datereceive = $current->format('d-m-y');
@@ -119,16 +123,15 @@ public function listmoneys()
         $username = $response->getUsername();
 
         $message = <<<TEXT
-        --------------------------------------------
-        Имя клиента: $money->customer_name
-        Имя курера: $money->courier_id
-        Сумма в $: $money->usd
-        Сумма в рублях: $money->rub
-        Сумма в сумах: $money->uzs
-        Тип валюты:  $money->type
-        Тип сервиса: $money->servicetype
-        Дата взятие: $money->dategive
-        Дата принятие: $money->datereceive
+        ----------------Предоплата---------------
+        Клиент: $money->customer_id $money->customer_name
+        Курер: $money->courier_id
+        В Долларах: $money->usd
+        В Рублях: $money->rub
+        В Сумах: $money->uzs
+        Валюта:  $money->type
+        Дата: $money->dategive
+        Курс: $curs
         Описание: $money->description
         --------------------------------------------
         TEXT;
